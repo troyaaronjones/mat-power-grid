@@ -19,6 +19,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: '@troyaaronjones'
       - run: npm install
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.PACKAGE_TOKEN }}" > ~/.npmrc
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.PACKAGE_TOKEN}}
