@@ -1,0 +1,35 @@
+import { ElementRef, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatSelect } from "@angular/material/select";
+import { GridService } from '../../grids/grid.service';
+import GridFilterItemInterface from '../../interfaces/grid-filter-item';
+import * as i0 from "@angular/core";
+export declare class MultiSelectComponent implements OnInit, OnChanges {
+    private gridService;
+    filter: any;
+    initialFilter?: GridFilterItemInterface;
+    resetFilters: null;
+    filterConfig: any;
+    mySelect: MatSelect;
+    fromElement: ElementRef;
+    selection: FormControl<any>;
+    selectionValuesApplied: any[];
+    selectionList: any[];
+    allSelected: boolean;
+    searchFilter: string;
+    multiple: boolean;
+    filterApplied: boolean;
+    constructor(gridService: GridService);
+    ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    private setInitialFilters;
+    menuOpened(): void;
+    selectionChange(): void;
+    close(): void;
+    toggle(): void;
+    reset(emit?: boolean): void;
+    changeSearch(): void;
+    searchFilterKeydown(event: KeyboardEvent): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<MultiSelectComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MultiSelectComponent, "amdg-multi-select", never, { "initialFilter": "initialFilter"; "resetFilters": "resetFilters"; "filterConfig": "filterConfig"; }, { "filter": "filter"; }, never, never, false>;
+}

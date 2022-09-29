@@ -1,0 +1,33 @@
+import { ElementRef, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatMenuTrigger } from '@angular/material/menu';
+import GridFilterItemInterface from '../../interfaces/grid-filter-item';
+import * as i0 from "@angular/core";
+export declare class TagFilterComponent implements OnInit, OnChanges {
+    initialFilter?: GridFilterItemInterface;
+    resetFilters: null;
+    numbersOnly: boolean;
+    filter: any;
+    menu: MatMenuTrigger;
+    fromElement: ElementRef;
+    filterApplied: boolean;
+    tagValue: FormControl<string | null>;
+    tagValues: string[];
+    tagValuesApplied: never[];
+    error: string;
+    maximumTagLimit: 5000;
+    stringMaxLength: 30;
+    numberMaxLength: 9;
+    constructor();
+    ngOnInit(): void;
+    ngOnChanges(changes: SimpleChanges): void;
+    menuOpened(): void;
+    validate(): void;
+    reset(emit?: boolean): void;
+    addTagValue(event: Event): void;
+    tagValueKeypress(event: any): void;
+    stringPaste(event: ClipboardEvent): void;
+    private ifNumber;
+    static ɵfac: i0.ɵɵFactoryDeclaration<TagFilterComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<TagFilterComponent, "amdg-tag-filter", never, { "initialFilter": "initialFilter"; "resetFilters": "resetFilters"; "numbersOnly": "numbersOnly"; }, { "filter": "filter"; }, never, never, false>;
+}

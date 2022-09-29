@@ -1,0 +1,10 @@
+export class ApiResponseModel {
+    constructor(statusCode, payload, success, message, code) {
+        this.statusCode = statusCode;
+        this.payload = payload;
+        this.success = success;
+        this.message = message;
+        this.code = code;
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBpLXJlc3BvbnNlLm1vZGVsLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vcHJvamVjdHMvYW5ndWxhci1tYXRlcmlhbC1kYXRhLWdyaWQvc3JjL2xpYi9hcGktcmVzcG9uc2UubW9kZWwudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsTUFBTSxPQUFPLGdCQUFnQjtJQUMzQixZQUNTLFVBQWtCLEVBQ2xCLE9BQVksRUFDWixPQUFnQixFQUNoQixPQUFlLEVBQ2YsSUFBWTtRQUpaLGVBQVUsR0FBVixVQUFVLENBQVE7UUFDbEIsWUFBTyxHQUFQLE9BQU8sQ0FBSztRQUNaLFlBQU8sR0FBUCxPQUFPLENBQVM7UUFDaEIsWUFBTyxHQUFQLE9BQU8sQ0FBUTtRQUNmLFNBQUksR0FBSixJQUFJLENBQVE7SUFDaEIsQ0FBQztDQUNQIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGNsYXNzIEFwaVJlc3BvbnNlTW9kZWwge1xuICBjb25zdHJ1Y3RvcihcbiAgICBwdWJsaWMgc3RhdHVzQ29kZTogbnVtYmVyLFxuICAgIHB1YmxpYyBwYXlsb2FkOiBhbnksXG4gICAgcHVibGljIHN1Y2Nlc3M6IGJvb2xlYW4sXG4gICAgcHVibGljIG1lc3NhZ2U6IHN0cmluZyxcbiAgICBwdWJsaWMgY29kZTogbnVtYmVyXG4gICkgeyAgfVxufVxuIl19
