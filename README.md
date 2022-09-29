@@ -52,3 +52,4 @@ Refer to the [Documentation](https://angular-grid.herokuapp.com/) page.
     ###### TypeScript
     [Check here](https://angular-grid.herokuapp.com/gettingStarted/installation)
 
+Improved
