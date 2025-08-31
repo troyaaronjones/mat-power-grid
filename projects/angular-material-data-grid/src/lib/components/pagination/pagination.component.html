@@ -1,63 +1,79 @@
 <div class="amdg-layout-container" style="height: 40px;">
-  <div id="amdg-buttons-container">
-    <button mat-icon-button class="amdg-desktop" aria-label="pagination" color="accent" [disabled]="currentPage === 1 || loadingData" (click)="pageChange(1)">
-      <mat-icon>skip_previous</mat-icon>
-    </button>
-    <button mat-icon-button aria-label="pagination" color="accent" [disabled]="currentPage === 1 || loadingData" (click)="pageChange(currentPage - 1)">
-      <mat-icon class="material-icons-outlined">keyboard_arrow_left</mat-icon>
-    </button>
-    <button mat-icon-button class="amdg-desktop" aria-label="pagination" disabled *ngIf="!pagesOnDisplay.includes(1)">
-      <mat-icon class="material-icons-outlined">more_horiz</mat-icon>
-    </button>
-    <ng-container *ngFor="let page of pagesOnDisplay">
-      <button *ngIf="currentPage !== page"
-              mat-icon-button
-              [ngClass]="[(page + '').length >= 3 ? 'amdg-larger-page-btn': '']"
-              aria-label="pagination"
-              color="accent"
-              class="amdg-desktop"
-              [disabled]="loadingData"
-              (click)="pageChange(page)">
-        {{page}}
-      </button>
+    <div id="amdg-buttons-container">
+        <button mat-icon-button class="amdg-desktop" aria-label="pagination" color="accent" [disabled]="currentPage === 1 || loadingData" (click)="pageChange(1)">
+            <mat-icon>skip_previous</mat-icon>
+        </button>
+        <button mat-icon-button aria-label="pagination" color="accent" [disabled]="currentPage === 1 || loadingData" (click)="pageChange(currentPage - 1)">
+            <mat-icon class="material-icons-outlined">keyboard_arrow_left</mat-icon>
+        </button>
+        @if (!pagesOnDisplay.includes(1)) {
+            <button mat-icon-button class="amdg-desktop" aria-label="pagination" disabled>
+                <mat-icon class="material-icons-outlined">more_horiz</mat-icon>
+            </button>
+        }
+        @for (page of pagesOnDisplay; track page) {
+            @if (currentPage === page) {
+                <button mat-flat-button
+                    [class.amdg-larger-page-btn]="(page + '').length >= 3"
+                    aria-label="pagination"
+                    color="accent"
+                    class="amdg-active"
+                    [disabled]="loadingData"
+                    (click)="pageChange(page)">
+                    {{page}}
+                </button>
+            } @else {
+                <button mat-icon-button
+                    [class.amdg-larger-page-btn]="(page + '').length >= 3"
+                    aria-label="pagination"
+                    color="accent"
+                    class="amdg-desktop"
+                    [disabled]="loadingData"
+                    (click)="pageChange(page)">
+                    {{page}}
+                </button>
+            }
+        }
 
-      <button *ngIf="currentPage === page"
-              mat-flat-button
-              [ngClass]="[(page + '').length >= 3 ? 'amdg-larger-page-btn': '']"
-              aria-label="pagination"
-              color="accent"
-              class="amdg-active"
-              [disabled]="loadingData"
-              (click)="pageChange(page)">
-        {{page}}
-      </button>
-    </ng-container>
+        @if (!pagesOnDisplay.includes(pages)) {
+            <button mat-icon-button class="amdg-desktop" aria-label="pagination" disabled>
+                <mat-icon class="material-icons-outlined">more_horiz</mat-icon>
+            </button>
+        }
+        <button mat-icon-button aria-label="pagination" color="accent" [disabled]="currentPage === pages || noOfTotalRecords === 0 || loadingData" (click)="pageChange(currentPage + 1)">
+            <mat-icon class="material-icons-outlined">keyboard_arrow_right</mat-icon>
+        </button>
+        <button mat-icon-button class="amdg-desktop" aria-label="pagination" color="accent" [disabled]="currentPage === pages || noOfTotalRecords === 0  || loadingData" (click)="pageChange(pages)">
+            <mat-icon>skip_next_outline</mat-icon>
+        </button>
+    </div>
 
-    <button mat-icon-button class="amdg-desktop" aria-label="pagination" disabled *ngIf="!pagesOnDisplay.includes(pages)">
-      <mat-icon class="material-icons-outlined">more_horiz</mat-icon>
-    </button>
-    <button mat-icon-button aria-label="pagination" color="accent" [disabled]="currentPage === pages || noOfTotalRecords === 0 || loadingData" (click)="pageChange(currentPage + 1)">
-      <mat-icon class="material-icons-outlined">keyboard_arrow_right</mat-icon>
-    </button>
-    <button mat-icon-button class="amdg-desktop" aria-label="pagination" color="accent" [disabled]="currentPage === pages || noOfTotalRecords === 0  || loadingData" (click)="pageChange(pages)">
-      <mat-icon>skip_next_outline</mat-icon>
-    </button>
-  </div>
-
-  <div>
-    <button *ngIf="disableFullScreenToggle === false" mat-icon-button aria-label="pagination" class="amdg-desktop amdg-mr-2" matTooltip="Toggle Fullscreen" (click)="fullscreen = !fullscreen;toggleFullScreen.emit(fullscreen)">
-      <mat-icon *ngIf="!fullscreen">fullscreen</mat-icon>
-      <mat-icon *ngIf="fullscreen">fullscreen_exit</mat-icon>
-    </button>
-    <p *ngIf="showNoOfRecords" class="amdg-desktop amdg-text-muted amdg-d-inline amdg-mr-2">Items per page:</p>
-    <mat-form-field *ngIf="showNoOfRecords" class="amdg-pagination-selector amdg-mr-4">
-      <mat-select [disabled]="loadingData" [(ngModel)]="newRecordsPerPage" (ngModelChange)="recordsPerPageChanged()">
-        <mat-option *ngFor="let pageSize of pageSizes" class="amdg-mat-option" [value]="pageSize">{{pageSize}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <span class="amdg-desktop" *ngIf="noOfSelectedRow">
+    <div>
+        @if (!disableFullScreenToggle) {
+            <button mat-icon-button aria-label="pagination" class="amdg-desktop amdg-mr-2" matTooltip="Toggle Fullscreen" (click)="fullscreen = !fullscreen;toggleFullScreen.emit(fullscreen)">
+                @if (fullscreen) {
+                    <mat-icon>fullscreen_exit</mat-icon>
+                } @else {
+                    <mat-icon>fullscreen</mat-icon>
+                }
+            </button>
+        }
+        @if (showNoOfRecords) {
+            <p class="amdg-desktop amdg-text-muted amdg-d-inline amdg-mr-2">Items per page:</p>
+            <mat-form-field class="amdg-pagination-selector amdg-mr-4">
+                <mat-select [disabled]="loadingData" [(ngModel)]="newRecordsPerPage" (ngModelChange)="recordsPerPageChanged()">
+                    @for (pageSize of pageSizes; track pageSize) {
+                        <mat-option class="amdg-mat-option" [value]="pageSize">{{pageSize}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        }
+        @if (noOfSelectedRow) {
+            <span class="amdg-desktop">
             <a mat-button color="accent" disableRipple class="amdg-grid-filter-applied-color amdg-font-weight-bold">{{noOfSelectedRow}} Selected</a>
             <span class="amdg-ml-2 amdg-mr-2">|</span>
-        </span>{{pageInfoDisplayText}}
-  </div>
+        </span>
+        }
+        {{pageInfoDisplayText}}
+    </div>
 </div>

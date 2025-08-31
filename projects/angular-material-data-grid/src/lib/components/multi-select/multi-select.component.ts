@@ -10,14 +10,15 @@ import {
   ViewChild
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatLegacySelect as MatSelect } from "@angular/material/legacy-select";
-import { GridService } from '../../grids/grid.service';
+import { MatSelect } from '@angular/material/select';
+import { GridService } from '../../../../../../lib/grids/grid.service';
 import GridFilterItemInterface from '../../interfaces/grid-filter-item';
 
 @Component({
   selector: 'amdg-multi-select',
   templateUrl: './multi-select.component.html',
-  styleUrls: ['./multi-select.component.scss']
+  styleUrls: ['./multi-select.component.scss'],
+  standalone: false
 })
 export class MultiSelectComponent implements OnInit, OnChanges {
 
