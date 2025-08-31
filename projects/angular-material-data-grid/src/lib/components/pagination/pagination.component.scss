@@ -1,0 +1,48 @@
+@import './../../variables';
+
+.amdg-layout-container {
+  border-top: 1px solid $highlight-dark-color;
+  background: $highlight-color;
+
+
+  .mat-icon-button, .mat-flat-button {
+    width: 26px;
+    height: 26px;
+    line-height: 26px !important;
+    border-radius: 2px;
+    margin-right: 4px;
+    font-weight: 400;
+    min-width: 26px;
+    padding: 0;
+    &.amdg-active {
+      color: white;
+    }
+
+    &.amdg-larger-page-btn {
+      width: 40px;
+    }
+
+  }
+
+}
+
+.amdg-grid-filter-applied-color {
+  padding: 0;
+  display: inline;
+  min-width: auto;
+  font-size: 12px;
+  line-height: normal;
+  cursor: inherit;
+}
+
+.amdg-pagination-selector {
+  font-size: 12px;
+  width: 70px;
+  height: 42px;
+}
+
+@media screen and (max-width: 768px) {
+  .amdg-desktop {
+    display: none !important;
+  }
+}

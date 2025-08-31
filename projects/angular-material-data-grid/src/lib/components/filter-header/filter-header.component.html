@@ -1,0 +1,60 @@
+<div class="amdg-filter-component">
+    @if (heading.disableFiltering !== true) {
+        @if (heading.type == 'date') {
+            <amdg-date-filter
+                class="amdg-w-100"
+                [initialFilter]="initialFilter"
+                [resetFilters]="resetFilters"
+                (filter)="filterObjCreated($event)">
+            </amdg-date-filter>
+        } @else if (heading.type === 'string') {
+            @switch (heading.filterType) {
+                @case ('multi-select') {
+                    <amdg-multi-select
+                        class="amdg-w-100"
+                        [initialFilter]="initialFilter"
+                        [resetFilters]="resetFilters"
+                        [filterConfig]="heading.other"
+                        (filter)="filterObjCreated($event)">
+                    </amdg-multi-select>
+                }
+                @case ('tag') {
+                    <amdg-tag-filter
+                        class="amdg-w-100"
+                        [initialFilter]="initialFilter"
+                        [resetFilters]="resetFilters"
+                        (filter)="filterObjCreated($event)">
+                    </amdg-tag-filter>
+                }
+                @default {
+                    <amdg-string-filter
+                        class="amdg-w-100"
+                        [initialFilter]="initialFilter"
+                        [resetFilters]="resetFilters"
+                        (filter)="filterObjCreated($event)">
+                    </amdg-string-filter>
+                }
+            }
+        } @else if (heading.type === 'number' || heading.type === 'currency') {
+            @switch (heading.filterType) {
+                @case ('tag') {
+                    <amdg-tag-filter
+                        class="amdg-w-100"
+                        [initialFilter]="initialFilter"
+                        [resetFilters]="resetFilters"
+                        [numbersOnly]="true"
+                        (filter)="filterObjCreated($event)">
+                    </amdg-tag-filter>
+                }
+                @default {
+                    <amdg-number-filter
+                        class="amdg-w-100"
+                        [initialFilter]="initialFilter"
+                        [resetFilters]="resetFilters"
+                        (filter)="filterObjCreated($event)">
+                    </amdg-number-filter>
+                }
+            }
+        }
+    }
+</div>

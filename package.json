@@ -1,62 +1,54 @@
 {
-  "name": "@troyaaronjones/angular_material_data_grid",
-  "version": "1.0.1",
-  "description": "This is an advanced data grid which is free to use with features and customizability only available on paid data grids.",
-  "peerDependencies": {
-    "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0",
-    "@angular/cdk": "^14.0.0",
-    "@angular/forms": "^14.0.0",
-    "@angular/material": "^14.0.0"
+  "name": "grid-example",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test angular-material-data-grid --watch=false --browsers=ChromeHeadless",
+    "lib:build": "ng build angular-material-data-grid --configuration=production",
+    "lib:package": "cd dist/angular-material-data-grid && npm publish",
+    "lint": "ng lint"
   },
+  "private": true,
   "dependencies": {
-    "tslib": "^2.3.0"
+    "@angular/animations": "^20.0.0",
+    "@angular/cdk": "^20.0.0",
+    "@angular/common": "^20.0.0",
+    "@angular/compiler": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/forms": "^20.0.0",
+    "@angular/material": "^20.0.0",
+    "@angular/platform-browser": "^20.0.0",
+    "@angular/platform-browser-dynamic": "^20.0.0",
+    "@angular/router": "^20.0.0",
+    "ng-packagr": "^20.2.0",
+    "ngx-highlightjs": "^6.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.15.0"
   },
-  "keywords": [
-    "angular",
-    "angular material",
-    "material design",
-    "angular material data grid",
-    "data grid",
-    "server side pagination",
-    "kendo grid",
-    "kendo",
-    "virtual scrolling",
-    "column reordering",
-    "material theming"
-  ],
-  "author": {
-    "name": "Troy Jones",
-    "email": "troy@poseidondevelopment.com",
-    "url": "http://poseidondevelopment.com"
-  },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/troyaaronjones/angular_material_data_grid.git"
-  },
-  "homepage": "https://github.com/troyaaronjones/angular_material_data_grid#readme",
-  "license": "MIT",
-  "module": "fesm2015/angular-material-data-grid.mjs",
-  "es2020": "fesm2020/angular-material-data-grid.mjs",
-  "esm2020": "esm2020/angular-material-data-grid.mjs",
-  "fesm2020": "fesm2020/angular-material-data-grid.mjs",
-  "fesm2015": "fesm2015/angular-material-data-grid.mjs",
-  "typings": "index.d.ts",
-  "exports": {
-    "./package.json": {
-      "default": "./package.json"
-    },
-    ".": {
-      "types": "./index.d.ts",
-      "esm2020": "./esm2020/angular-material-data-grid.mjs",
-      "es2020": "./fesm2020/angular-material-data-grid.mjs",
-      "es2015": "./fesm2015/angular-material-data-grid.mjs",
-      "node": "./fesm2015/angular-material-data-grid.mjs",
-      "default": "./fesm2020/angular-material-data-grid.mjs"
-    }
-  },
-  "sideEffects": false
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^20.0.0",
+    "@angular-eslint/builder": "20.0.0",
+    "@angular-eslint/eslint-plugin": "20.0.0",
+    "@angular-eslint/eslint-plugin-template": "20.0.0",
+    "@angular-eslint/schematics": "20.0.0",
+    "@angular-eslint/template-parser": "20.0.0",
+    "@angular/cli": "^20.0.0",
+    "@angular/compiler-cli": "^20.0.0",
+    "@types/jasmine": "~3.10.0",
+    "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "eslint": "^8.28.0",
+    "jasmine-core": "~3.10.0",
+    "karma": "~6.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "~1.7.0",
+    "typescript": "~5.8.0"
+  }
 }
