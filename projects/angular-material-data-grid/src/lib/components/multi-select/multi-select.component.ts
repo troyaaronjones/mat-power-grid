@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
-import { GridService } from '../../../../../../lib/grids/grid.service';
+import { GridService } from '../../grids/grid.service';
 import GridFilterItemInterface from '../../interfaces/grid-filter-item';
 
 @Component({

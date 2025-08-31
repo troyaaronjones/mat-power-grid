@@ -1,4 +1,4 @@
-@import './../../variables';
+@use './../../variables' as *;
 
 .amdg-placeholder {
   opacity: .6;

@@ -1,17 +1,17 @@
-import { CdkDropList } from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCard } from '@angular/material/card';
-import { MatCheckbox } from '@angular/material/checkbox';
-import { MatChip } from '@angular/material/chips';
-import { MatDatepickerToggle, MatDateRangeInput, MatDateRangePicker } from '@angular/material/datepicker';
-import { MatDivider } from '@angular/material/divider';
-import { MatInput } from '@angular/material/input';
-import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
-import { MatProgressBar } from '@angular/material/progress-bar';
-import { MatRipple } from '@angular/material/core';
-import { MatTooltip } from '@angular/material/tooltip';
-import { RouterLink } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRippleModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RouterModule } from '@angular/router';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { TagFilterComponent } from './components/tag-filter/tag-filter.component';
 import { ServerBindGridComponent } from './grids/server-bind-grid/server-bind-grid.component';
@@ -31,10 +31,6 @@ import { DateFilterComponent } from './components/date-filter/date-filter.compon
 import { HttpClientModule } from '@angular/common/http';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButton, MatIconButton } from '@angular/material/button';
-import { MatFormField } from '@angular/material/form-field';
-import { MatIcon } from '@angular/material/icon';
-import { MatSelect } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -66,30 +62,22 @@ import { MatIconModule } from '@angular/material/icon';
         ScrollingModule,
         FormsModule,
         ReactiveFormsModule,
-        MatButton,
-        MatIconButton,
-        MatFormField,
-        MatIcon,
-        MatSelect,
         MatFormFieldModule,
         MatSelectModule,
         MatButtonModule,
         MatIconModule,
-        MatTooltip,
-        MatDateRangeInput,
-        MatDatepickerToggle,
-        MatDateRangePicker,
-        MatMenu,
-        MatInput,
-        MatMenuTrigger,
-        MatDivider,
-        MatChip,
-        MatCard,
-        MatCheckbox,
-        MatProgressBar,
-        MatRipple,
-        CdkDropList,
-        RouterLink
+        MatTooltipModule,
+        MatDatepickerModule,
+        MatMenuModule,
+        MatInputModule,
+        MatDividerModule,
+        MatChipsModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatProgressBarModule,
+        MatRippleModule,
+        DragDropModule,
+        RouterModule
     ],
     exports: [ServerBindGridComponent]
 })
