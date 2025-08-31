@@ -1,4 +1,4 @@
-@import './variables';
+@use './variables' as *;
 
 .amdg-small-stroked-button {
   line-height: 26px !important;

@@ -36,13 +36,13 @@
         <p class="amdg-text-center amdg-mt-2 amdg-text-muted">No Tags entered</p>
     } @else {
         <div class="amdg-tags-container amdg-p-3">
-          <mat-chip-list selectable="false">
+          <mat-chip-set>
             @for (tag of tagValues; track tag; let i = $index) {
                 <mat-chip [removable]="true" (removed)="tagValues.splice(i, 1)">
                   {{tag}} <mat-icon matChipRemove>cancel</mat-icon>
                 </mat-chip>
             }
-          </mat-chip-list>
+          </mat-chip-set>
         </div>
     }
 
