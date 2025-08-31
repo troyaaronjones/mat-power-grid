@@ -11,7 +11,7 @@ This is an advanced data grid which is free to use with features and customizabi
 - Optional columns with re-ordering
 - Master Detail Grid
 
-The initial purpose of creating this data grid was to make it easy for developers to easily create highly advanced data grids with server-side pagination along with multiple filters and sorting with minimum effort and time. (Client Side Pagination is also present.) In order to make this possible a tight integration between the back-end data-source and the front-end component should be agreed upon. This gives the ability to stay focused on advanced functionality and the creation of data grids with only configurations while staying opinionated. Moreover, the solutions provided by reputed vendors were expensive which makes open-source software more attractive to many clients. This product is 100% open source. Check [Repository here](https://github.com/dillyboy/angular_material_data_grid).
+The initial purpose of creating this data grid was to make it easy for developers to easily create highly advanced data grids with server-side pagination along with multiple filters and sorting with minimum effort and time. (Client Side Pagination is also present.) In order to make this possible a tight integration between the back-end data-source and the front-end component should be agreed upon. This gives the ability to stay focused on advanced functionality and the creation of data grids with only configurations while staying opinionated. Moreover, the solutions provided by reputed vendors were expensive which makes open-source software more attractive to many clients. This product is 100% open source. Check [Repository here](https://github.com/troyaaronjones/angular_material_data_grid).
 
 <hr />
 
@@ -25,7 +25,7 @@ As this package is not available on the npm registry, you need to build it from 
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/dillyboy/angular_material_data_grid.git
+    git clone https://github.com/troyaaronjones/angular_material_data_grid.git
     cd angular_material_data_grid
     ```
 
