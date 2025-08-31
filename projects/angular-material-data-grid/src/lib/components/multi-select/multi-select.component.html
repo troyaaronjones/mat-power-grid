@@ -42,6 +42,8 @@
         </mat-form-field>
     </div>
     <div id="amdg-list-container" >
-        <mat-option class="amdg-mat-option" *ngFor="let item of selectionList" [value]="item" [ngClass]="{'amdg-d-none': item.hide}">{{item.text}}</mat-option>
+        @for (item of selectionList; track item) {
+            <mat-option class="amdg-mat-option" [value]="item" [ngClass]="{'amdg-d-none': item.hide}">{{item.text}}</mat-option>
+        }
     </div>
 </mat-select>

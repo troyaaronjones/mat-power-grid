@@ -16,7 +16,9 @@
         <div class="amdg-layout-container">
             <mat-form-field class="amdg-w-100 amdg-mt-3">
                 <mat-select [formControl]="selection" placeholder="Logic" (selectionChange)="changeSelection()">
-                    <mat-option class="amdg-mat-option" *ngFor="let item of stringFilterTypes" [value]="item.value">{{item.text}}</mat-option>
+                    @for (item of stringFilterTypes; track item) {
+                        <mat-option class="amdg-mat-option" [value]="item.value">{{item.text}}</mat-option>
+                    }
                 </mat-select>
             </mat-form-field>
         </div>
@@ -27,7 +29,9 @@
             </mat-form-field>
         </div>
         <div class="amdg-layout-container">
-            <span *ngIf="invalidValue" class="amdg-invalid-error">Invalid value entered</span>
+            @if (invalidValue) {
+                <span class="amdg-invalid-error">Invalid value entered</span>
+            }
         </div>
     </div>
 </mat-menu>
