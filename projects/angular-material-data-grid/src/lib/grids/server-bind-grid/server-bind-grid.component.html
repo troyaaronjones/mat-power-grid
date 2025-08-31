@@ -1,0 +1,266 @@
+<div id="amdg-grid-container">
+  <div class="amdg-layout-container amdg-p-0">
+    <div>
+      <mat-card id="column-control-btn-card"><button *ngIf="columnControl" mat-raised-button [matMenuTriggerFor]="columnControlMenu">Column Preferences<mat-icon>expand_more</mat-icon></button></mat-card>
+      <mat-menu #columnControlMenu="matMenu" class="amdg-column-control-menu" (closed)="updateColumns(true)">
+        <div class="amdg-column-control-container" (click)="$event.stopPropagation()">
+          <div class="amdg-layout-container amdg-p-3" style="align-items: start">
+            <mat-form-field class="amdg-w-100 amdg-fs-12">
+              <mat-label>Search Columns</mat-label>
+              <mat-icon matPrefix class="amdg-mr-2">search</mat-icon>
+              <input matInput type="text" [(ngModel)]="columnSearchParam">
+              <button mat-button *ngIf="columnSearchParam" matSuffix mat-icon-button aria-label="Clear" (click)="columnSearchParam=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+            <button mat-stroked-button aria-label="Reset" color="warn" class="amdg-ml-2" (click)="columnPreferencesResetEmit.emit();columnSearchParam=''">
+              Reset
+            </button>
+          </div>
+
+          <div class="amdg-cdk-drop-list" cdkDropList (cdkDropListDropped)="columnDrop($event)" [cdkDropListDisabled]="columnSearchParam.length === 0 ? false: true">
+            <div class="column-item" *ngFor="let heading of headings | columnSearchFilter: columnSearchParam" cdkDrag>
+              <div class="amdg-d-inline-flex">
+                <mat-icon [ngStyle]="{'opacity': columnSearchParam.length === 0 ? 1: 0}">drag_indicator</mat-icon>
+                <mat-checkbox *ngIf="heading.show === undefined" disabled [checked]="true"><span class="amdg-ml-3">{{heading.display}}<span *ngIf="!heading.display" style="font-style: italic">Unnamed</span></span></mat-checkbox>
+                <mat-checkbox *ngIf="heading.show !== undefined" [(ngModel)]="heading.show" (ngModelChange)="updateColumns()"><span class="amdg-ml-3">{{heading.display}} <span *ngIf="!heading.display" style="font-style: italic">Unnamed</span></span></mat-checkbox>
+              </div>
+            </div>
+            <div class="amdg-text-muted amdg-text-center" *ngIf="(headings | columnSearchFilter: columnSearchParam)?.length == 0">
+              <b>No such column</b>
+            </div>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
+    <div>
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <mat-card id="grid" class="mat-elevation-z{{elevation}}" [ngClass]="{'fullscreen': fullscreen, 'grid-transparency': transparency}" [style.border-top-left-radius]="columnControl ? '0px' : '5px'">
+    <button *ngIf="scrollRemainingDistanceToLeft !== 0" mat-button (click)="scrollLeft()" aria-label="navigate left" class="navigate-left-btn">
+      <mat-icon class="amdg-fs-40 navigate-icons">chevron_left</mat-icon>
+    </button>
+    <button *ngIf="scrollRemainingDistanceToRight !== 0 && gridItems.length !== 0" mat-button (click)="scrollRight()" aria-label="navigate right" class="navigate-right-btn" [ngStyle]="{'margin-right': horizontalScrollBarWidth + 'px'}">
+      <mat-icon class="amdg-fs-40 navigate-icons">chevron_right</mat-icon>
+    </button>
+    <div class="empty-records" *ngIf="gridItems.length === 0 && !loadingData">
+      No Records Available
+    </div>
+    <div class="horizontal-scroll" #gridContainer>
+      <table [ngStyle]="{'left': '-' + scrollRemainingDistanceToLeft + 'px', 'width': 'calc(100% - ' + horizontalScrollBarWidth + 'px)' }" >
+        <thead>
+        <th *ngIf="selection" class="amdg-selection"><mat-checkbox [(ngModel)]="allGridItemsSelected" [disabled]="loadingData" (ngModelChange)="gridItemSelectionChanged(true)"></mat-checkbox></th>
+        <th *ngIf="expandable && (expandableConfig.multipleExpansion === false || expandableConfig.type === 'table')" class="amdg-selection"></th>
+        <th *ngIf="expandable && (expandableConfig.multipleExpansion && expandableConfig.type !== 'table')" class="amdg-selection amdg-fs-20 amdg-text-center amdg-cursor-pointer" (click)="toggleAllRowsExpansion()">
+           <span *ngIf="allRowsExpanded === false">+</span><span *ngIf="allRowsExpanded">−</span>
+        </th>
+        <th *ngFor="let heading of headings | columnFilter;" [style.width]="heading.width">
+          <amdg-sort-header [heading]="heading" (filter)="sort($event)"></amdg-sort-header>
+        </th>
+        </thead>
+        <thead>
+        <th *ngIf="selection" class="amdg-selection"></th>
+        <th *ngIf="expandable" class="amdg-selection"></th>
+        <th *ngFor="let heading of headings | columnFilter;" [style.width]="heading.width">
+          <amdg-filter-header [initialFilters]="initialFilters" [resetFilters]="resetFilters" [heading]="heading" (filter)="filter($event)"></amdg-filter-header>
+        </th>
+        </thead>
+      </table>
+      <mat-progress-bar *ngIf="loadingData" mode="indeterminate" class="amdg-position-absolute amdg-z-index-1"></mat-progress-bar>
+      <cdk-virtual-scroll-viewport #cdkVirtualScrollViewport id="amdgScrollViewport"  [ngStyle]="{'height': 'calc(100vh - ' +offsetTop+ 'px)' }" (scroll)="scrollChanged($event)">
+        <div class="vertical-scroll">
+          <table>
+            <tbody (window:mouseup)="endSelect()">
+              <ng-container *cdkVirtualFor="let item of gridItems; let odd=odd; let i = index;templateCacheSize: 400">
+                <tr (mouseover)="overSelect($event, item)"
+                    [ngClass]="{ odd: odd, rowSelected: item.gridItemSelected == true, expanded: item.gridItemExpanded}"
+                    [style.background]="item?.amdgGridRowBackground">
+                  <td *ngIf="selection" class="amdg-selection amdg-animated" #selectionElem (mousedown)="startSelect(item, selectionElem)"><mat-checkbox [(ngModel)]="item['gridItemSelected']" (ngModelChange)="gridItemSelectionChanged()"></mat-checkbox></td>
+                  <td *ngIf="expandable" mat-ripple class="amdg-selection amdg-animated amdg-fs-20 amdg-text-center amdg-cursor-pointer" (click)="clickRow($event, item, i)">
+                    <span *ngIf="item.gridItemExpanded !== true">+</span><span *ngIf="item.gridItemExpanded">−</span>
+                  </td>
+                  <td *ngFor="let heading of headings | columnFilter;"
+                      [style.width]="heading.width"
+                      [style.textAlign]="heading.textAlign"
+                      [style.background]="heading.background"
+                      [style.color]="heading.color"
+                      [style.fontWeight]="heading.fontWeight"
+                      [style.fontStyle]="heading.fontStyle">
+<!--                    || item?.amdgGridRowCellsTextAlign?.[heading.fieldName]-->
+<!--                    || item?.amdgGridRowCellsBackground?.[heading.fieldName]-->
+<!--                    || item?.amdgGridRowCellsColor?.[heading.fieldName]-->
+<!--                    || item?.amdgGridRowCellsFontWeight?.[heading.fieldName]-->
+<!--                    || item?.amdgGridRowCellsFontStyle?.[heading.fieldName]-->
+
+                    <ng-container [ngSwitch]="heading.type">
+
+                      <!--IMAGE URL-->
+                      <div *ngSwitchCase="'image-url'" style="height: 48px" >
+                        <img [src]="item[heading.fieldName]" alt="grid image item" width="40px" height="40px" class="amdg-mt-1 amdg-image-tag"  [matMenuTriggerFor]="imageMenu" #trigger="matMenuTrigger" (mouseenter)="trigger.openMenu()" (mouseleave)="trigger.closeMenu()">
+                        <mat-menu #imageMenu="matMenu" [hasBackdrop]="false" class="amdg-image-menu-padding">
+                          <img [src]="item[heading.fieldName]" class="amdg-image-tag" alt="grid image item" width="150px" height="150px">
+                        </mat-menu>
+                      </div>
+
+                      <!--BUTTON GROUP-->
+                      <span *ngSwitchCase="'button-group'">
+                        <ng-container *ngIf="heading.other && heading.other.buttons.length === 1">
+                          <button [disabled]="item[heading.other.buttons[0].disableField]" color="primary" class="amdg-button-group-btn amdg-mr-2" type="button" mat-button (click)="goToLink(heading.fieldName, item, heading.other.buttons[0].display)">
+                            <mat-icon class="amdg-mr-2">{{heading.other.buttons[0].icon}}</mat-icon>
+                            {{heading.other.buttons[0].display}}
+                          </button>
+                        </ng-container>
+                        <ng-container *ngIf="heading.other && heading.other.buttons.length > 1">
+                          <button class="amdg-button-group-btn" mat-button color="primary" [matMenuTriggerFor]="gridButtonListMenu" [disabled]="item[heading.other.mainButton.disableField]"> {{heading.other.mainButton.display}} <mat-icon>{{heading.other.mainButton.icon}}</mat-icon></button>
+                          <mat-menu #gridButtonListMenu="matMenu" xPosition="before">
+                            <button class="amdg-mat-menu-item" *ngFor="let btn of heading.other.buttons" [disabled]="item[btn.disableField]" mat-menu-item (click)="goToLink(heading.fieldName, item, btn.display)">
+                              <mat-icon class="amdg-mr-2 amdg-fs-20">{{btn.icon}}</mat-icon>
+                              {{btn.display}}
+                            </button>
+                          </mat-menu>
+                        </ng-container>
+                      </span>
+
+                      <!--CURRENCY-->
+                      <span *ngSwitchCase="'currency'">
+                        {{item[heading.fieldName] | currency: heading.prefix}}
+                      </span>
+
+                      <!--ANY OTHER TYPE-->
+                      <span *ngSwitchDefault [title]="item[heading.title] ? item[heading.title] : item[heading.fieldName]">
+
+                        <ng-container *ngIf="heading?.clickable; else plainValue">
+
+                          <ng-container *ngIf="heading.clickable === 'url'">
+                            <ng-container *ngIf="heading.other.source === 'external'; else internalLink">
+                              <a mat-button disableRipple color="primary" class="amdg-link" [ngClass]="{'amdg-link-disabled': loadingData}" *ngIf="heading.other && heading.other['urlTemplate']" [href]="item[heading.fieldName + 'Link'] + (item[heading.fieldName + 'QueryParams'] ? '?' + item[heading.fieldName + 'QueryParams'] : '')">{{item[heading.fieldName]}}</a>
+                              <mat-icon color="primary" class="amdg-fs-12 amdg-icon-external-link" [ngClass]="{'link-amdg-link-disabled': loadingData}" *ngIf="heading.other && heading.other.openTab && item[heading.fieldName]" (click)="openExternalLinkInNewTab(item[heading.fieldName + 'Link'], item[heading.fieldName + 'QueryParams'])">launch</mat-icon>
+                            </ng-container>
+                            <ng-template #internalLink>
+                              <a mat-button disableRipple color="primary" class="amdg-link" [ngClass]="{'link-amdg-link-disabled': loadingData}" *ngIf="heading.other && heading.other['urlTemplate']" [routerLink]="item[heading.fieldName + 'Link']" [queryParams]="item[heading.fieldName + 'QueryParams']">{{item[heading.fieldName]}}</a>
+                              <mat-icon color="primary" class="amdg-fs-12 amdg-icon-external-link" [ngClass]="{'link-amdg-link-disabled': loadingData}" *ngIf="heading.other && heading.other.openTab && item[heading.fieldName]" (click)="openLinkInNewTab(item[heading.fieldName + 'Link'], item[heading.fieldName + 'QueryParams'])">launch</mat-icon>
+                            </ng-template>
+                          </ng-container>
+
+                          <ng-container *ngIf="heading.clickable === 'button'">
+                             <a mat-button disableRipple color="primary" class="amdg-link" (click)="goToLink(heading.fieldName, item, item[heading.fieldName])">
+                               <span *ngIf="heading.prefix" [innerHTML]="heading.prefix | template : item"></span>
+                               {{item[heading.fieldName]}}
+                               <span *ngIf="heading.suffix" [innerHTML]="heading.suffix | template : item"></span>
+                            </a>
+                          </ng-container>
+
+                        </ng-container>
+
+
+                        <ng-template #plainValue>
+                          <span *ngIf="heading.prefix" [innerHTML]="heading.prefix | template : item"></span>
+                          {{item[heading.fieldName]}}
+                          <span *ngIf="heading.suffix" [innerHTML]="heading.suffix | template : item"></span>
+                        </ng-template>
+
+                      </span>
+                    </ng-container>
+                  </td>
+                </tr>
+                <tr *ngIf="expandable && item.gridItemExpanded" [style.height]="'auto'" [ngClass]="{ odd: odd, rowSelected: item.gridItemSelected}">
+                  <td class="amdg-p-0" [attr.colspan]="headings.length + 1 + (selection ? 1 : 0)">
+                    <div [ngClass]="[item.gridItemExpanded ? 'amdg-content-opened' : 'amdg-content-closed']" [ngSwitch]="expandableConfig.type">
+                      <ng-container *ngSwitchCase="'html'">
+                        <div [innerHTML]="expandableConfig.template | template : item"
+                             [ngStyle]="{
+                                          width: (gridWidth - 16) + 'px',
+                                          position: 'relative',
+                                          left: scrollRemainingDistanceToLeft + 'px',
+                                          borderTop: '1px solid rgba(118, 118, 118, 0.3)'
+                                        }">
+                        </div>
+                      </ng-container>
+                      <ng-container *ngSwitchCase="'table'">
+                        <div class="amdg-p-2" *ngIf="item.gridItemExpanded" style="height: 320px;overflow: auto"
+                             [ngStyle]="{
+                                          width: (gridWidth - 30) + 'px',
+                                          position: 'relative',
+                                          left: scrollRemainingDistanceToLeft + 'px',
+                                          borderTop: '1px solid rgba(118, 118, 118, 0.3)'
+                                        }">
+                          <amdg-child-grid
+                            [headings]="expandableConfig.childGrid!.headings"
+                            [url]="expandableConfig.childGrid!.url"
+                            [entity]="expandableConfig.childGrid!.entity | template_object: item"
+                            [serverSidePagination]="true">
+                          </amdg-child-grid>
+                        </div>
+                      </ng-container>
+                      <ng-container *ngSwitchCase="'breakdown'">
+                        <div class="amdg-h-150px">
+                          <div [innerHTML]="expandableConfig.template | template : item"
+                               [ngStyle]="{
+                                          width: (gridWidth - 16) + 'px',
+                                          position: 'relative',
+                                          left: scrollRemainingDistanceToLeft + 'px',
+                                          borderTop: '1px solid rgba(118, 118, 118, 0.3)'
+                                        }">
+                          </div>
+                          <table class="amdg-w-100" [ngClass]="{'amdg-breakdown-table-border-top': expandableConfig.template}">
+                            <tr *ngFor="let item of item.amdgBreakdownGridRecords; let odd=odd; let even=even;" [ngClass]="{'amdg-cursor-pointer': expandable,odd: odd, even: even}" >
+                              <td class="amdg-selection-breakdown" *ngIf="selection"></td>
+                              <td class="amdg-selection" *ngIf="expandable"></td>
+                              <td  *ngFor="let heading of headings | columnFilter;"
+                                   [style.width]="heading.width"
+                                   [style.textAlign]="heading.textAlign"
+                                   [style.background]="heading.background"
+                                   [style.color]="heading.color"
+                                   [style.fontWeight]="heading.fontWeight"
+                                   [style.fontStyle]="heading.fontStyle" class="amdg-text-truncate">
+                                <ng-container [ngSwitch]="heading.type">
+                                  <!--IMAGE URL-->
+                                  <span *ngSwitchCase="'image-url'">
+                                    <img [src]="item[heading.fieldName]" alt="grid image item" width="80px" height="80px" class="amdg-mt-2 amdg-mb-2">
+                                  </span>
+
+                                  <!--BUTTON GROUP-->
+                                  <span *ngSwitchCase="'button-group'">
+                                  </span>
+                                  <!--CURRENCY-->
+                                  <span *ngSwitchCase="'currency'">
+                                    {{item[heading.fieldName] | currency: heading.prefix}}
+                                  </span>
+                                  <span *ngSwitchDefault [title]="item[heading.fieldName]"> {{item[heading.fieldName]}}</span>
+                                </ng-container>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+
+                      </ng-container>
+                    </div>
+                  </td>
+                </tr>
+
+              </ng-container>
+              <tr class="empty" *ngIf="gridItems.length === 0" [ngStyle]="{'height': 'calc(100vh - ' +offsetTop+ 'px)' }">
+                <td *ngIf="selection" class="amdg-selection amdg-animated"></td>
+                <td *ngIf="expandable" class="amdg-selection amdg-animated"></td>
+                <td *ngFor="let heading of headings | columnFilter;" [style.width]="heading.width"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </cdk-virtual-scroll-viewport>
+    </div>
+    <amdg-pagination
+        [loadingData]="loadingData"
+        [noOfTotalRecords]="serverSidePagination ? (response.totalCount ? response.totalCount : 0) : response.gridData.length"
+        [noOfRecords]="response.gridData.length"
+        [noOfSelectedRow]="selectedRows.length"
+        [currentPage]="currentPage"
+        [disableFullScreenToggle]="disableFullScreenToggle"
+        [pageSizes]="pageSizes"
+        [newRecordsPerPage]="pageSize"
+        (pageChanged)="serverSidePagination ? getData($event) : pageChanged($event)"
+        (toggleFullScreen)="toggleFullScreen($event)">
+    </amdg-pagination>
+  </mat-card>
+</div>
