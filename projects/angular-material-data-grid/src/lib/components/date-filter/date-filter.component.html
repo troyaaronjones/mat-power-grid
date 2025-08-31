@@ -22,9 +22,11 @@
         <div class="amdg-layout-container">
             <mat-form-field class="amdg-w-100 amdg-mt-3">
                 <mat-select [formControl]="selection" placeholder="Logic" (selectionChange)="changeSelection()">
-                    <mat-option class="amdg-mat-option" *ngFor="let item of dateFilterTypes"
-                        [value]="item.value">{{ item.text }}
-                    </mat-option>
+                    @for (item of dateFilterTypes; track item) {
+                        <mat-option class="amdg-mat-option"
+                            [value]="item.value">{{ item.text }}
+                        </mat-option>
+                    }
                 </mat-select>
             </mat-form-field>
         </div>
@@ -41,13 +43,18 @@
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-date-range-picker #picker></mat-date-range-picker>
 
-                <mat-error *ngIf="range.controls['start'].hasError('matStartDateInvalid')">Invalid start date
-                </mat-error>
-                <mat-error *ngIf="range.controls['end'].hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                @if (range.controls['start'].hasError('matStartDateInvalid')) {
+                    <mat-error>Invalid start date</mat-error>
+                }
+                @if (range.controls['end'].hasError('matEndDateInvalid')) {
+                    <mat-error>Invalid end date</mat-error>
+                }
             </mat-form-field>
         </div>
         <div class="amdg-layout-container">
-            <span *ngIf="invalidValue" class="amdg-invalid-error">Invalid value entered</span>
+            @if (invalidValue) {
+                <span class="amdg-invalid-error">Invalid value entered</span>
+            }
         </div>
     </div>
 </mat-menu>
