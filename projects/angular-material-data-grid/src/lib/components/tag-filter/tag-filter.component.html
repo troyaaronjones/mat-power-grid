@@ -1,4 +1,7 @@
-<button class="amdg-filter-open-btn amdg-layout-container" mat-stroked-button [color]="filterApplied ? 'accent': 'none'" type="button" #menuTrigger="matMenuTrigger" [matMenuTriggerFor]="numberFilterMenu" (menuOpened)="menuOpened()">
+<button class="amdg-filter-open-btn amdg-layout-container"
+    mat-stroked-button [color]="filterApplied ? 'accent': 'none'"
+    type="button" #menuTrigger="matMenuTrigger"
+    [matMenuTriggerFor]="numberFilterMenu" (menuOpened)="menuOpened()">
     @if (!filterApplied) {
         <span class="amdg-placeholder amdg-font-weight-normal">Unfiltered</span>
     } @else {
@@ -33,9 +36,9 @@
         <p class="amdg-text-center amdg-mt-2 amdg-text-muted">No Tags entered</p>
     } @else {
         <div class="amdg-tags-container amdg-p-3">
-          <mat-chip-list>
+          <mat-chip-list selectable="false">
             @for (tag of tagValues; track tag; let i = $index) {
-                <mat-chip [removable]="true" (removed)="tagValues.splice(i, 1)" [selectable]="false">
+                <mat-chip [removable]="true" (removed)="tagValues.splice(i, 1)">
                   {{tag}} <mat-icon matChipRemove>cancel</mat-icon>
                 </mat-chip>
             }

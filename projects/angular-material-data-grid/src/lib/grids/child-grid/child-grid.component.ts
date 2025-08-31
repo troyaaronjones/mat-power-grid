@@ -20,7 +20,8 @@ import { GridService } from '../grid.service';
     selector: 'amdg-child-grid',
     templateUrl: './child-grid.component.html',
     styleUrls: ['./child-grid.component.scss', '../server-bind-grid/server-bind-grid.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ChildGridComponent implements OnInit {
     
