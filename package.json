@@ -1,6 +1,6 @@
 {
-  "name": "grid-example",
-  "version": "0.0.0",
+  "name": "angular-material-data-grid",
+  "version": "2.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

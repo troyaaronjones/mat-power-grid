@@ -449,6 +449,7 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
         this.requestBodyEmit.emit(body);
         
         this.gridPostSubscription = this.gridService.getAnyPost(this.url, body).subscribe(data => {
+            console.log('data', data);
             if (data.statusCode === 200 || data.success) {
                 const gridData = this.linkCreationInterceptor(data.payload.gridData);
                 const {totalCount, other} = data.payload;
