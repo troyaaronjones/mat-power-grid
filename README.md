@@ -76,4 +76,4 @@ As this package is not available on the npm registry, you need to build it from 
      &lt;/amdg-grid&gt;</code>
 
 ###### TypeScript
-For a complete example of the component's inputs and outputs, please refer to the source code in this repository.
+For a complete example of the component's inputs and outputs, please refer to the [documentation.md](documentation.md) file.
