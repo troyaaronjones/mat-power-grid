@@ -11,6 +11,9 @@
   justify-content: space-between !important;
   align-items: center !important;
   padding: 0 8px !important;
+  .mat-mdc-unelevated-button .mat-mdc-button-touch-target {
+    background-color: #e7e6e9!important;
+  }
 }
 
 .amdg-m-0 {
@@ -203,9 +206,13 @@
 }
 
 body {
+  .amdg-filter-open-btn {
+    border-radius: 0 !important;
+  }
   &.darkMode {
     .amdg-modified-mat-select, .amdg-filter-open-btn {
       background: #424242;
+      border-radius: 0 !important;
       color: white;
     }
     .cdk-drag-preview, .mat-menu-panel {
@@ -283,4 +290,45 @@ body {
 
 .mat-expansion-panel {
   border-radius: 0 !important;
+}
+
+.mdc-checkbox {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+.mdc-checkbox .mdc-checkbox__native-control {
+  left: 0 !important;
+}
+
+.mdc-checkbox__background {
+  left: 0 !important;
+}
+
+.mat-mdc-checkbox .mat-mdc-checkbox-ripple, .mdc-checkbox__ripple {
+  display: none !important;
+}
+
+.mdc-button .mdc-button__label {
+  display: flex;
+  align-items: anchor-center;
+  justify-content: space-between;
+  width: inherit;
+}
+
+.mat-mdc-form-field-infix {
+  min-height: unset !important;
+  min-width: fit-content !important;
+  padding-top: 0.15rem !important;
+  padding-bottom: 0.15rem !important;
+}
+
+.mat-form-field-outline {
+  display: none;
+}
+
+.amdg-pagination-buttons {
+  .mat-mdc-unelevated-button .mat-mdc-button-touch-target {
+    height: 2.5rem !important;
+  }
 }

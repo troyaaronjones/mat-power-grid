@@ -37,8 +37,45 @@
 
 .amdg-pagination-selector {
   font-size: 12px;
-  width: 70px;
+  width: 6rem !important;
   height: 42px;
+}
+
+.amdg-pagination-items-per-page {
+  align-content: center;
+  display: flex;
+  justify-content: space-evenly;
+  .vertical-center {
+    align-items: anchor-center;
+    display: flex;
+  }
+  .select {
+    margin-top: 0.8rem !important;
+  }
+}
+
+.amdg-active {
+  color: #99999c !important;
+}
+
+.amdg-desktop {
+  color: #99999c !important;
+}
+
+.amdg-pagination-buttons {
+  .amdg-active {
+    color: #99999c !important;
+    height: 40px;
+    margin: -1rem 0 0;
+    padding: 0;
+  }
+
+  .amdg-desktop {
+    color: #99999c !important;
+    height: 40px;
+    margin: -1rem 0 0;
+    padding: 0;
+  }
 }
 
 @media screen and (max-width: 768px) {

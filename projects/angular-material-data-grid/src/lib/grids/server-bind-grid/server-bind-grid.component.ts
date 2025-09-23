@@ -58,6 +58,7 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
     @Output() filtersChangedEmit: any = new EventEmitter<GridFilterItemInterface[]>();
     @Output() sortChangedEmit: any = new EventEmitter<GridSortItemInterface>();
     @Output() buttonClickEmit: any = new EventEmitter<GridButtonClickInterface>();
+    @Output() rowClickEmit: any = new EventEmitter<any>();
     @Output() columnPreferencesChangedEmit: any = new EventEmitter<GridHeadingInterface[]>();
     @Output() columnPreferencesChangeEndedEmit: any = new EventEmitter<GridHeadingInterface[]>();
     @Output() columnPreferencesResetEmit: any = new EventEmitter();
@@ -112,7 +113,7 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
     };
     filters: GridFilterItemInterface[] = [];
     gridPostSubscription: Subscription = new Subscription();
-    
+    clickedOnInfo: any;
     fullscreen = false;
     allRowsExpanded = false;
     
@@ -607,5 +608,28 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
     
     goToLink(fieldName: string, item: string, click?: string): void {
         this.buttonClickEmit.emit({fieldName, item, click});
+    }
+    
+    onRowClick(param: { $event: any; item: any; i: number }) {
+        this.clickedOnInfo = param?.$event?.currentTarget?.innerHTML.match(/mat-mdc-checkbox-\d+/g);
+        let currentState = false;
+        window?.document?.getElementById(this.clickedOnInfo[0])?.classList.forEach((e) => {
+            if (e === 'mat-mdc-checkbox-checked') {
+                currentState = true;
+            }
+        });
+        console.log(this.clickedOnInfo);
+        setTimeout(() => {
+            let checked = false;
+            window?.document?.getElementById(this.clickedOnInfo[0])?.classList.forEach((e) => {
+                console.log('class', e);
+                if (e === 'mat-mdc-checkbox-checked') {
+                    checked = true;
+                }
+            });
+            if (currentState === checked) {
+                this.rowClickEmit.emit(param);
+            }
+        }, 100);
     }
 }

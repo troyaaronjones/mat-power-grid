@@ -137,6 +137,7 @@
                         <ng-container
                             *cdkVirtualFor="let item of gridItems; let odd=odd; let i = index;templateCacheSize: 400">
                             <tr (mouseover)="overSelect($event, item)"
+                                (click)="onRowClick({$event, item, i})"
                                 [ngClass]="{ odd: odd, rowSelected: item.gridItemSelected == true, expanded: item.gridItemExpanded}"
                                 [style.background]="item?.amdgGridRowBackground">
                                 @if (selection) {

@@ -1,5 +1,5 @@
-# Advanced Angular Material Data Grid System
-#### Inspired by Kendo UI Grid
+# Advanced Angular Material Data Grid for Angular 20 - (Alpha)
+#### Based on Advanced Angular Material Data Grid System (0.90) by Dillyboy
 
 This is an advanced data grid which is free to use with features and customizability only available on paid data grids.
 

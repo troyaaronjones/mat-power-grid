@@ -1,9 +1,11 @@
 <div class="amdg-layout-container" style="height: 40px;">
-    <div id="amdg-buttons-container">
-        <button mat-icon-button class="amdg-desktop" aria-label="pagination" color="accent" [disabled]="currentPage === 1 || loadingData" (click)="pageChange(1)">
+    <div id="amdg-buttons-container" class="amdg-pagination-buttons">
+        <button mat-icon-button class="amdg-desktop" aria-label="pagination" color="accent"
+            [disabled]="currentPage === 1 || loadingData" (click)="pageChange(1)">
             <mat-icon>skip_previous</mat-icon>
         </button>
-        <button mat-icon-button aria-label="pagination" color="accent" [disabled]="currentPage === 1 || loadingData" (click)="pageChange(currentPage - 1)">
+        <button mat-icon-button aria-label="pagination" color="accent" [disabled]="currentPage === 1 || loadingData"
+            (click)="pageChange(currentPage - 1)">
             <mat-icon class="material-icons-outlined">keyboard_arrow_left</mat-icon>
         </button>
         @if (!pagesOnDisplay.includes(1)) {
@@ -16,21 +18,19 @@
                 <button mat-flat-button
                     [class.amdg-larger-page-btn]="(page + '').length >= 3"
                     aria-label="pagination"
-                    color="accent"
                     class="amdg-active"
                     [disabled]="loadingData"
                     (click)="pageChange(page)">
-                    {{page}}
+                    {{ page }}
                 </button>
             } @else {
                 <button mat-icon-button
                     [class.amdg-larger-page-btn]="(page + '').length >= 3"
                     aria-label="pagination"
-                    color="accent"
                     class="amdg-desktop"
                     [disabled]="loadingData"
                     (click)="pageChange(page)">
-                    {{page}}
+                    {{ page }}
                 </button>
             }
         }
@@ -40,40 +40,56 @@
                 <mat-icon class="material-icons-outlined">more_horiz</mat-icon>
             </button>
         }
-        <button mat-icon-button aria-label="pagination" color="accent" [disabled]="currentPage === pages || noOfTotalRecords === 0 || loadingData" (click)="pageChange(currentPage + 1)">
+        <button mat-icon-button aria-label="pagination" color="accent"
+            [disabled]="currentPage === pages || noOfTotalRecords === 0 || loadingData"
+            (click)="pageChange(currentPage + 1)">
             <mat-icon class="material-icons-outlined">keyboard_arrow_right</mat-icon>
         </button>
-        <button mat-icon-button class="amdg-desktop" aria-label="pagination" color="accent" [disabled]="currentPage === pages || noOfTotalRecords === 0  || loadingData" (click)="pageChange(pages)">
+        <button mat-icon-button class="amdg-desktop" aria-label="pagination" color="accent"
+            [disabled]="currentPage === pages || noOfTotalRecords === 0  || loadingData" (click)="pageChange(pages)">
             <mat-icon>skip_next_outline</mat-icon>
         </button>
     </div>
 
-    <div>
+    <div class="amdg-pagination-items-per-page">
         @if (!disableFullScreenToggle) {
-            <button mat-icon-button aria-label="pagination" class="amdg-desktop amdg-mr-2" matTooltip="Toggle Fullscreen" (click)="fullscreen = !fullscreen;toggleFullScreen.emit(fullscreen)">
-                @if (fullscreen) {
-                    <mat-icon>fullscreen_exit</mat-icon>
-                } @else {
-                    <mat-icon>fullscreen</mat-icon>
-                }
-            </button>
+            <div class="vertical-center">
+                <button mat-icon-button aria-label="pagination" class="amdg-desktop amdg-mr-2"
+                    matTooltip="Toggle Fullscreen" (click)="fullscreen = !fullscreen;toggleFullScreen.emit(fullscreen)">
+                    @if (fullscreen) {
+                        <mat-icon>fullscreen_exit</mat-icon>
+                    } @else {
+                        <mat-icon>fullscreen</mat-icon>
+                    }
+                </button>
+            </div>
         }
         @if (showNoOfRecords) {
-            <p class="amdg-desktop amdg-text-muted amdg-d-inline amdg-mr-2">Items per page:</p>
-            <mat-form-field class="amdg-pagination-selector amdg-mr-4">
-                <mat-select [disabled]="loadingData" [(ngModel)]="newRecordsPerPage" (ngModelChange)="recordsPerPageChanged()">
-                    @for (pageSize of pageSizes; track pageSize) {
-                        <mat-option class="amdg-mat-option" [value]="pageSize">{{pageSize}}</mat-option>
-                    }
-                </mat-select>
-            </mat-form-field>
+            <div class="vertical-center">
+                <p class="amdg-desktop amdg-text-muted amdg-d-inline amdg-mr-2">Items per page:</p>
+            </div>
+            <div class="vertical-center select">
+                <mat-form-field class="amdg-pagination-selector amdg-mr-4">
+                    <mat-select [disabled]="loadingData" [(ngModel)]="newRecordsPerPage"
+                        (ngModelChange)="recordsPerPageChanged()">
+                        @for (pageSize of pageSizes; track pageSize) {
+                            <mat-option class="amdg-mat-option" [value]="pageSize">{{ pageSize }}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+            </div>
         }
         @if (noOfSelectedRow) {
-            <span class="amdg-desktop">
-            <a mat-button color="accent" disableRipple class="amdg-grid-filter-applied-color amdg-font-weight-bold">{{noOfSelectedRow}} Selected</a>
-            <span class="amdg-ml-2 amdg-mr-2">|</span>
-        </span>
+            <div class="vertical-center">
+                <span class="amdg-desktop">
+                    <a mat-button color="accent" disableRipple
+                        class="amdg-grid-filter-applied-color amdg-font-weight-bold">{{ noOfSelectedRow }} Selected</a>
+                    <span class="amdg-ml-2 amdg-mr-2">|</span>
+                </span>
+            </div>
         }
-        {{pageInfoDisplayText}}
+        <div class="vertical-center">
+            {{ pageInfoDisplayText }}
+        </div>
     </div>
 </div>
