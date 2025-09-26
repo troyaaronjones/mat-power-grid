@@ -23,7 +23,7 @@ import {
     ViewEncapsulation
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { GridFilterItem } from '../../angular-material-data-grid-interfaces';
 import GridButtonClickInterface from '../../interfaces/grid-button-click-interface';
 import GridFilterItemInterface from '../../interfaces/grid-filter-item';
@@ -89,7 +89,8 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
     @Input() disableFullScreenToggle = false;
     @Input() pageSizes: number[] = [50, 100, 250, 500, 1000];
     @Input() pageSize: number = 100;
-    
+    @Input() postData: (param: any) => Observable<any>;
+
     headingsCopy = [];
     columnSearchParam = '';
     allGridItemsSelected = false;
@@ -448,9 +449,10 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
         }
         
         this.requestBodyEmit.emit(body);
-        
-        this.gridPostSubscription = this.gridService.getAnyPost(this.url, body).subscribe(data => {
-            console.log('data', data);
+
+        const gridData$ = this.postData ? this.postData(body) : this.gridService.getAnyPost(this.url, body);
+
+        this.gridPostSubscription = gridData$.subscribe(data => {
             if (data.statusCode === 200 || data.success) {
                 const gridData = this.linkCreationInterceptor(data.payload.gridData);
                 const {totalCount, other} = data.payload;
