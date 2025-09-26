@@ -3,6 +3,26 @@
 .mat-menu-panel.amdg-column-control-menu {
   width: 320px;
   max-width: 320px;
+  .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+    top: 0;
+  }
+}
+
+.amdg-column-control-menu {
+  .mat-mdc-form-field-icon-prefix, .mat-mdc-form-field-icon-suffix {
+    padding: 0 !important;
+
+    .mat-icon, .mat-mdc-form-field-icon-suffix.mat-icon {
+      padding: 0 !important;
+      padding-left: 1px !important;
+      box-sizing: content-box;
+    }
+  }
+
+  .amdg-d-inline-flex {
+    display: inline-flex !important;
+    align-items: anchor-center !important;
+  }
 }
 
 .amdg-column-control-container {
@@ -22,6 +42,9 @@
       position: relative;
       cursor: move;
     }
+  }
+  .amdg-column-search-field {
+    height: 30px !important;
   }
 }
 
