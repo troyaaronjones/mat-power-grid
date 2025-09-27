@@ -17,7 +17,7 @@ import GridSortItemInterface from '../../interfaces/grid-sort-item';
 import { GridService } from '../grid.service';
 
 @Component({
-    selector: 'amdg-child-grid',
+    selector: 'mpg-child-grid',
     templateUrl: './child-grid.component.html',
     styleUrls: ['./child-grid.component.scss', '../server-bind-grid/server-bind-grid.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,

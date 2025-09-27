@@ -41,10 +41,10 @@ export class CustomVirtualScrollStrategy extends FixedSizeVirtualScrollStrategy 
 }
 
 @Component({
-    selector: 'amdg-grid',
+    selector: 'mpg-grid',
     templateUrl: './server-bind-grid.component.html',
     styleUrls: ['./server-bind-grid.component.scss',
-        '../../angular-material-data-grid-utilities.scss'],
+        '../../mat-power-grid-utilities.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
     providers: [{provide: VIRTUAL_SCROLL_STRATEGY, useClass: CustomVirtualScrollStrategy}],
@@ -351,13 +351,13 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
     // Multiple Selection logic
     startSelect(item: any, element: HTMLElement): void {
         this.selectionTimeoutHandler = setTimeout(() => {
-            this.renderer.addClass(element, 'amdg-pulse');
+            this.renderer.addClass(element, 'mpg-pulse');
             this.selectionStarted = true;
             item.gridItemSelected = true;
             this.selectionTimeoutHandler = null;
             
             setTimeout(() => {
-                this.renderer.removeClass(element, 'amdg-pulse');
+                this.renderer.removeClass(element, 'mpg-pulse');
             }, 1000);
         }, 350);
     }

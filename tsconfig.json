@@ -3,9 +3,9 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "angular-material-data-grid": [
-        "dist/angular-material-data-grid/angular-material-data-grid",
-        "dist/angular-material-data-grid"
+      "mat-power-grid": [
+        "dist/mat-power-grid/mat-power-grid",
+        "dist/mat-power-grid"
       ]
     },
     "baseUrl": "./",

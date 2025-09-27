@@ -35,5 +35,5 @@ export declare class PaginationComponent implements OnInit, OnChanges {
     continuePageChange(pageNo: number, notify?: boolean): void;
     recordsPerPageChanged(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<PaginationComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<PaginationComponent, "amdg-pagination", never, { "noOfTotalRecords": "noOfTotalRecords"; "loadingData": "loadingData"; "noOfRecords": "noOfRecords"; "noOfSelectedRow": "noOfSelectedRow"; "currentPage": "currentPage"; "disableFullScreenToggle": "disableFullScreenToggle"; "showNoOfRecords": "showNoOfRecords"; "pageSizes": "pageSizes"; "newRecordsPerPage": "newRecordsPerPage"; }, { "pageChanged": "pageChanged"; "toggleFullScreen": "toggleFullScreen"; }, never, never, false>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<PaginationComponent, "mpg-pagination", never, { "noOfTotalRecords": "noOfTotalRecords"; "loadingData": "loadingData"; "noOfRecords": "noOfRecords"; "noOfSelectedRow": "noOfSelectedRow"; "currentPage": "currentPage"; "disableFullScreenToggle": "disableFullScreenToggle"; "showNoOfRecords": "showNoOfRecords"; "pageSizes": "pageSizes"; "newRecordsPerPage": "newRecordsPerPage"; }, { "pageChanged": "pageChanged"; "toggleFullScreen": "toggleFullScreen"; }, never, never, false>;
 }

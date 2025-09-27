@@ -1,5 +1,5 @@
 /**
  * Generated bundle index. Do not edit.
  */
-/// <amd-module name="angular-material-data-grid" />
+/// <amd-module name="mat-power-grid" />
 export * from './public-api';

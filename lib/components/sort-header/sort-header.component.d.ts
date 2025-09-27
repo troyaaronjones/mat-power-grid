@@ -6,5 +6,5 @@ export declare class SortHeaderComponent {
     constructor();
     sort(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<SortHeaderComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<SortHeaderComponent, "amdg-sort-header", never, { "heading": "heading"; }, { "filter": "filter"; }, never, never, false>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<SortHeaderComponent, "mpg-sort-header", never, { "heading": "heading"; }, { "filter": "filter"; }, never, never, false>;
 }

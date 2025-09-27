@@ -1,10 +1,10 @@
 @use './../../variables' as *;
 
-.amdg-placeholder {
+.mpg-placeholder {
   opacity: .6;
 }
 
-.amdg-filter-container {
+.mpg-filter-container {
   width: 260px;
   min-height: 60px;
   display: block;
@@ -13,7 +13,7 @@
   font-size: 12px;
 }
 
-.amdg-filter-open-btn {
+.mpg-filter-open-btn {
   line-height: 26px !important;
   font-size: inherit;
   padding: 0 4px;
@@ -27,7 +27,7 @@
   }
 }
 
-.amdg-select-arrow {
+.mpg-select-arrow {
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
@@ -36,7 +36,7 @@
   margin: 0 4px;
 }
 
-.amdg-invalid-error {
+.mpg-invalid-error {
   color: $warn;
   font-size: 12px;
 }

@@ -3,19 +3,19 @@
     <thead>
       @for (heading of headings | columnFilter; track heading.fieldName) {
         <th [style.width]="heading.width">
-          <amdg-sort-header [heading]="heading" (filter)="sort($event)"></amdg-sort-header>
+          <mpg-sort-header [heading]="heading" (filter)="sort($event)"></mpg-sort-header>
         </th>
       }
     </thead>
     <thead>
       @for (heading of headings | columnFilter; track heading.fieldName) {
         <th [style.width]="heading.width">
-          <amdg-filter-header [heading]="heading" (filter)="filter($event)"></amdg-filter-header>
+          <mpg-filter-header [heading]="heading" (filter)="filter($event)"></mpg-filter-header>
         </th>
       }
     </thead>
     @if (loadingData) {
-      <mat-progress-bar mode="indeterminate" class="amdg-position-absolute amdg-z-index-1"></mat-progress-bar>
+      <mat-progress-bar mode="indeterminate" class="mpg-position-absolute mpg-z-index-1"></mat-progress-bar>
     }
     <tbody>
     @for (item of gridItems; track item; let odd = $odd; let i = $index) {
@@ -33,9 +33,9 @@
 
               @case ('image-url') {
                 <div style="height: 48px" >
-                  <img [src]="item[heading.fieldName]" alt="grid image item" width="40px" height="40px" class="amdg-mt-1 amdg-image-tag"  [matMenuTriggerFor]="imageMenu" #trigger="matMenuTrigger" (mouseenter)="trigger.openMenu()" (mouseleave)="trigger.closeMenu()">
-                  <mat-menu #imageMenu="matMenu" [hasBackdrop]="false" class="amdg-image-menu-padding">
-                    <img [src]="item[heading.fieldName]" class="amdg-image-tag" alt="grid image item" width="150px" height="150px">
+                  <img [src]="item[heading.fieldName]" alt="grid image item" width="40px" height="40px" class="mpg-mt-1 mpg-image-tag"  [matMenuTriggerFor]="imageMenu" #trigger="matMenuTrigger" (mouseenter)="trigger.openMenu()" (mouseleave)="trigger.closeMenu()">
+                  <mat-menu #imageMenu="matMenu" [hasBackdrop]="false" class="mpg-image-menu-padding">
+                    <img [src]="item[heading.fieldName]" class="mpg-image-tag" alt="grid image item" width="150px" height="150px">
                   </mat-menu>
                 </div>
               }
@@ -43,16 +43,16 @@
               @case ('button-group') {
                 <span>
                   @if (heading.other && heading.other.buttons.length === 1) {
-                    <button [disabled]="item[heading.other.buttons[0].disableField]" color="primary" class="amdg-button-group-btn amdg-mr-2" type="button" mat-button (click)="goToLink(heading.fieldName, item, heading.other.buttons[0].display)">
-                      <mat-icon class="amdg-mr-2">{{heading.other.buttons[0].icon}}</mat-icon>
+                    <button [disabled]="item[heading.other.buttons[0].disableField]" color="primary" class="mpg-button-group-btn mpg-mr-2" type="button" mat-button (click)="goToLink(heading.fieldName, item, heading.other.buttons[0].display)">
+                      <mat-icon class="mpg-mr-2">{{heading.other.buttons[0].icon}}</mat-icon>
                       {{heading.other.buttons[0].display}}
                     </button>
                   } @else if (heading.other && heading.other.buttons.length > 1) {
-                    <button class="amdg-button-group-btn" mat-button color="primary" [matMenuTriggerFor]="gridButtonListMenu" [disabled]="item[heading.other.mainButton.disableField]"> {{heading.other.mainButton.display}} <mat-icon>{{heading.other.mainButton.icon}}</mat-icon></button>
+                    <button class="mpg-button-group-btn" mat-button color="primary" [matMenuTriggerFor]="gridButtonListMenu" [disabled]="item[heading.other.mainButton.disableField]"> {{heading.other.mainButton.display}} <mat-icon>{{heading.other.mainButton.icon}}</mat-icon></button>
                     <mat-menu #gridButtonListMenu="matMenu" xPosition="before">
                       @for (btn of heading.other.buttons; track btn) {
-                        <button class="amdg-mat-menu-item" [disabled]="item[btn.disableField]" mat-menu-item (click)="goToLink(heading.fieldName, item, btn.display)">
-                          <mat-icon class="amdg-mr-2 amdg-fs-20">{{btn.icon}}</mat-icon>
+                        <button class="mpg-mat-menu-item" [disabled]="item[btn.disableField]" mat-menu-item (click)="goToLink(heading.fieldName, item, btn.display)">
+                          <mat-icon class="mpg-mr-2 mpg-fs-20">{{btn.icon}}</mat-icon>
                           {{btn.display}}
                         </button>
                       }
@@ -73,22 +73,22 @@
                     @if (heading.clickable === 'url') {
                       @if (heading.other.source === 'external') {
                         @if (heading.other && heading.other['urlTemplate']) {
-                          <a mat-button disableRipple color="primary" class="amdg-link" [ngClass]="{'amdg-link-disabled': loadingData}" [href]="item[heading.fieldName + 'Link'] + (item[heading.fieldName + 'QueryParams'] ? '?' + item[heading.fieldName + 'QueryParams'] : '')">{{item[heading.fieldName]}}</a>
+                          <a mat-button disableRipple color="primary" class="mpg-link" [ngClass]="{'mpg-link-disabled': loadingData}" [href]="item[heading.fieldName + 'Link'] + (item[heading.fieldName + 'QueryParams'] ? '?' + item[heading.fieldName + 'QueryParams'] : '')">{{item[heading.fieldName]}}</a>
                         }
                         @if (heading.other && heading.other.openTab && item[heading.fieldName]) {
-                          <mat-icon color="primary" class="amdg-fs-12 amdg-icon-external-link" [ngClass]="{'link-amdg-link-disabled': loadingData}" (click)="openExternalLinkInNewTab(item[heading.fieldName + 'Link'], item[heading.fieldName + 'QueryParams'])">launch</mat-icon>
+                          <mat-icon color="primary" class="mpg-fs-12 mpg-icon-external-link" [ngClass]="{'link-mpg-link-disabled': loadingData}" (click)="openExternalLinkInNewTab(item[heading.fieldName + 'Link'], item[heading.fieldName + 'QueryParams'])">launch</mat-icon>
                         }
                       } @else {
                         @if (heading.other && heading.other['urlTemplate']) {
-                          <a mat-button disableRipple color="primary" class="amdg-link" [ngClass]="{'link-amdg-link-disabled': loadingData}" [routerLink]="item[heading.fieldName + 'Link']" [queryParams]="item[heading.fieldName + 'QueryParams']">{{item[heading.fieldName]}}</a>
+                          <a mat-button disableRipple color="primary" class="mpg-link" [ngClass]="{'link-mpg-link-disabled': loadingData}" [routerLink]="item[heading.fieldName + 'Link']" [queryParams]="item[heading.fieldName + 'QueryParams']">{{item[heading.fieldName]}}</a>
                         }
                         @if (heading.other && heading.other.openTab && item[heading.fieldName]) {
-                          <mat-icon color="primary" class="amdg-fs-12 amdg-icon-external-link" [ngClass]="{'link-amdg-link-disabled': loadingData}" (click)="openLinkInNewTab(item[heading.fieldName + 'Link'], item[heading.fieldName + 'QueryParams'])">launch</mat-icon>
+                          <mat-icon color="primary" class="mpg-fs-12 mpg-icon-external-link" [ngClass]="{'link-mpg-link-disabled': loadingData}" (click)="openLinkInNewTab(item[heading.fieldName + 'Link'], item[heading.fieldName + 'QueryParams'])">launch</mat-icon>
                         }
                       }
                     }
                     @if (heading.clickable === 'button') {
-                       <a mat-button disableRipple color="primary" class="amdg-link" (click)="goToLink(heading.fieldName, item, item[heading.fieldName])">
+                       <a mat-button disableRipple color="primary" class="mpg-link" (click)="goToLink(heading.fieldName, item, item[heading.fieldName])">
                          @if (heading.prefix) {
                            <span [innerHTML]="heading.prefix | template : item"></span>
                          }
@@ -117,7 +117,7 @@
     </tbody>
   </table>
 
-  <amdg-pagination
+  <mpg-pagination
       [loadingData]="loadingData"
       [noOfTotalRecords]="serverSidePagination ? (response.totalCount ? response.totalCount : 0) : response.gridData.length"
       [noOfRecords]="response.gridData.length"
@@ -126,5 +126,5 @@
       [disableFullScreenToggle]="true"
       [showNoOfRecords]="false"
       (pageChanged)="serverSidePagination ? getData($event) : pageChanged($event)">
-  </amdg-pagination>
+  </mpg-pagination>
 </mat-card>

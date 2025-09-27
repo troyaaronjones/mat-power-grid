@@ -1,6 +1,6 @@
 @use './../../variables' as *;
 
-.amdg-layout-container {
+.mpg-layout-container {
   border-top: 1px solid $highlight-dark-color;
   background: $highlight-color;
 
@@ -14,11 +14,11 @@
     font-weight: 400;
     min-width: 26px;
     padding: 0;
-    &.amdg-active {
+    &.mpg-active {
       color: white;
     }
 
-    &.amdg-larger-page-btn {
+    &.mpg-larger-page-btn {
       width: 40px;
     }
 
@@ -26,7 +26,7 @@
 
 }
 
-.amdg-grid-filter-applied-color {
+.mpg-grid-filter-applied-color {
   padding: 0;
   display: inline;
   min-width: auto;
@@ -35,13 +35,13 @@
   cursor: inherit;
 }
 
-.amdg-pagination-selector {
+.mpg-pagination-selector {
   font-size: 12px;
   width: 6rem !important;
   height: 42px;
 }
 
-.amdg-pagination-items-per-page {
+.mpg-pagination-items-per-page {
   align-content: center;
   display: flex;
   justify-content: space-evenly;
@@ -54,23 +54,23 @@
   }
 }
 
-.amdg-active {
+.mpg-active {
   color: #99999c !important;
 }
 
-.amdg-desktop {
+.mpg-desktop {
   color: #99999c !important;
 }
 
-.amdg-pagination-buttons {
-  .amdg-active {
+.mpg-pagination-buttons {
+  .mpg-active {
     color: #99999c !important;
     height: 40px;
     margin: -1rem 0 0;
     padding: 0;
   }
 
-  .amdg-desktop {
+  .mpg-desktop {
     color: #99999c !important;
     height: 40px;
     margin: -1rem 0 0;
@@ -79,7 +79,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .amdg-desktop {
+  .mpg-desktop {
     display: none !important;
   }
 }

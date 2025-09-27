@@ -11,5 +11,5 @@ export declare class FilterHeaderComponent implements OnInit {
     ngOnInit(): void;
     filterObjCreated(ev: GridFilterItemInterface): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<FilterHeaderComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<FilterHeaderComponent, "amdg-filter-header", never, { "heading": "heading"; "initialFilters": "initialFilters"; "resetFilters": "resetFilters"; }, { "filter": "filter"; }, never, never, false>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<FilterHeaderComponent, "mpg-filter-header", never, { "heading": "heading"; "initialFilters": "initialFilters"; "resetFilters": "resetFilters"; }, { "filter": "filter"; }, never, never, false>;
 }

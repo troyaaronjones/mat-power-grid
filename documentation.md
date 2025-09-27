@@ -133,8 +133,8 @@ The `headings` input is an array of `GridHeadingInterface` objects. Each object 
 The grid supports showing and hiding columns, as well as reordering them. To enable this feature, set the `columnControl` input to `true`.
 
 ```html
-<amdg-grid [columnControl]="true" ...>
-</amdg-grid>
+<mpg-grid [columnControl]="true" ...>
+</mpg-grid>
 ```
 
 When `columnControl` is `true`, a button will appear above the grid that opens a dialog for managing columns.
@@ -149,8 +149,8 @@ The visibility of each column is controlled by the `show` property in the `GridH
 
 The grid is styled using SCSS and can be customized by overriding the SCSS variables. The main files for theming are:
 
-*   `projects/angular-material-data-grid/src/lib/variables.scss`: Contains color and typography variables.
-*   `projects/angular-material-data-grid/src/lib/angular-material-data-grid-utilities.scss`: Contains utility classes for styling.
+*   `projects/mat-power-grid/src/lib/variables.scss`: Contains color and typography variables.
+*   `projects/mat-power-grid/src/lib/mat-power-grid-utilities.scss`: Contains utility classes for styling.
 
 To customize the theme, you can override these variables in your own SCSS file and import it after the grid's styles.
 
@@ -280,8 +280,8 @@ Client-side pagination is the default behavior. The grid will fetch all the data
 To enable server-side pagination, set the `serverSidePagination` input to `true`.
 
 ```html
-<amdg-grid [serverSidePagination]="true" ...>
-</amdg-grid>
+<mpg-grid [serverSidePagination]="true" ...>
+</mpg-grid>
 ```
 
 When server-side pagination is enabled, the grid will send a request to the URL with the page number and page size. The API is expected to return the data for the requested page.
@@ -324,8 +324,8 @@ The API is expected to return a response in the following format:
 The grid supports a master-detail view where a row can be expanded to show more information or a child grid. To enable this feature, set the `expandable` input to `true` and provide the `expandableConfig`.
 
 ```html
-<amdg-grid [expandable]="true" [expandableConfig]="expandableConfig" ...>
-</amdg-grid>
+<mpg-grid [expandable]="true" [expandableConfig]="expandableConfig" ...>
+</mpg-grid>
 ```
 
 The `expandableConfig` object has the following properties:
@@ -335,4 +335,4 @@ The `expandableConfig` object has the following properties:
 | `type`              | `'html' \| 'grid'` | The type of content to show in the expanded section.                                                    |
 | `multipleExpansion` | `boolean` | Whether multiple rows can be expanded at the same time.                                                 |
 | `template`          | `string`  | The HTML template to use when `type` is `'html'`. You can use placeholders like `{{name}}` to show data from the row. |
-| `childGrid`         | `any`     | The configuration for the child grid when `type` is `'grid'`. This is another `amdg-grid` component.     |
+| `childGrid`         | `any`     | The configuration for the child grid when `type` is `'grid'`. This is another `mpg-grid` component.     |

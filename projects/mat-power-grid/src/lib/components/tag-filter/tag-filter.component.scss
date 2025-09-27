@@ -1,10 +1,10 @@
 @use './../../variables' as *;
 
-.amdg-placeholder {
+.mpg-placeholder {
   opacity: .6;
 }
 
-.amdg-filter-container {
+.mpg-filter-container {
   width: 260px;
   min-height: 60px;
   display: block;
@@ -12,13 +12,13 @@
   overflow: hidden;
   font-size: 12px;
 
-  .amdg-tags-container {
+  .mpg-tags-container {
     max-height: 300px;
     overflow-y: auto;
   }
 }
 
-.amdg-filter-open-btn {
+.mpg-filter-open-btn {
   line-height: 26px !important;
   font-size: inherit;
   padding: 0 4px;
@@ -32,7 +32,7 @@
   }
 }
 
-.amdg-select-arrow {
+.mpg-select-arrow {
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
@@ -41,11 +41,11 @@
   margin: 0 4px;
 }
 
-.amdg-tag-input {
+.mpg-tag-input {
   width: calc(100% - 30px);
 }
 
-.amdg-additional-selection {
+.mpg-additional-selection {
   opacity: 0.75;
   font-size: 0.75em;
   color: rgba(0, 0, 0, 0.87);
