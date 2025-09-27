@@ -21,42 +21,19 @@ This library is compatible with Angular 20 and above.
 
 #### Installation
 
-As this package is not available on the npm registry, you need to build it from the source.
+**This package is in alpha and under active development. Breaking changes may be introduced in future versions.**
 
-1.  **Clone the repository:**
+1.  **Install from npm:**
     ```bash
-    git clone https://github.com/troyaaronjones/mat-power-grid.git
-    cd mat-power-grid
+    npm install mat-power-grid
     ```
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
-
-3.  **Build the library:**
-    ```bash
-    npm run lib:build
-    ```
-
-4.  **Navigate to the distribution directory and link the package:**
-    ```bash
-    cd dist/mat-power-grid
-    npm link
-    ```
-
-5.  **Navigate to your project and link the package:**
-    ```bash
-    cd /path/to/your/project
-    npm link mat-power-grid
-    ```
-
-6.  **Install Angular Material** (if not already installed):
+2.  **Install Angular Material** (if not already installed):
     ```bash
     ng add @angular/material
     ```
 
-7.  **Import Module**
+3.  **Import Module**
     ```typescript
     import { MatPowerGridModule } from 'mat-power-grid';
 
