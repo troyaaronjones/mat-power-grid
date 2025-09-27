@@ -9,7 +9,7 @@ import { CdkVirtualScrollViewport, FixedSizeVirtualScrollStrategy } from '@angul
 import { MatDialog } from '@angular/material/dialog';
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import { GridService } from '../grid.service';
-import { GridFilterItem } from '../../angular-material-data-grid-interfaces';
+import { GridFilterItem } from '../../mat-power-grid-interfaces';
 import * as i0 from "@angular/core";
 export declare class CustomVirtualScrollStrategy extends FixedSizeVirtualScrollStrategy {
     constructor();
@@ -107,5 +107,5 @@ export declare class ServerBindGridComponent implements OnInit, AfterViewInit, O
         i: number;
     }): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ServerBindGridComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ServerBindGridComponent, "amdg-grid", never, { "headings": "headings"; "url": "url"; "selection": "selection"; "columnControl": "columnControl"; "entity": "entity"; "transparency": "transparency"; "elevation": "elevation"; "serverSidePagination": "serverSidePagination"; "initialFilters": "initialFilters"; "initialSort": "initialSort"; "resetFilters": "resetFilters"; "expandable": "expandable"; "expandableConfig": "expandableConfig"; "disableFullScreenToggle": "disableFullScreenToggle"; "pageSizes": "pageSizes"; "pageSize": "pageSize"; }, { "requestBodyEmit": "requestBodyEmit"; "responseEmit": "responseEmit"; "rowClickEmit": "rowClickEmit"; "selectionEmit": "selectionEmit"; "filtersChangedEmit": "filtersChangedEmit"; "sortChangedEmit": "sortChangedEmit"; "buttonClickEmit": "buttonClickEmit"; "columnPreferencesChangedEmit": "columnPreferencesChangedEmit"; "columnPreferencesChangeEndedEmit": "columnPreferencesChangeEndedEmit"; "columnPreferencesResetEmit": "columnPreferencesResetEmit"; "dataErrorEmit": "dataErrorEmit"; }, never, ["*"], false>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ServerBindGridComponent, "mpg-grid", never, { "headings": "headings"; "url": "url"; "selection": "selection"; "columnControl": "columnControl"; "entity": "entity"; "transparency": "transparency"; "elevation": "elevation"; "serverSidePagination": "serverSidePagination"; "initialFilters": "initialFilters"; "initialSort": "initialSort"; "resetFilters": "resetFilters"; "expandable": "expandable"; "expandableConfig": "expandableConfig"; "disableFullScreenToggle": "disableFullScreenToggle"; "pageSizes": "pageSizes"; "pageSize": "pageSize"; }, { "requestBodyEmit": "requestBodyEmit"; "responseEmit": "responseEmit"; "rowClickEmit": "rowClickEmit"; "selectionEmit": "selectionEmit"; "filtersChangedEmit": "filtersChangedEmit"; "sortChangedEmit": "sortChangedEmit"; "buttonClickEmit": "buttonClickEmit"; "columnPreferencesChangedEmit": "columnPreferencesChangedEmit"; "columnPreferencesChangeEndedEmit": "columnPreferencesChangeEndedEmit"; "columnPreferencesResetEmit": "columnPreferencesResetEmit"; "dataErrorEmit": "dataErrorEmit"; }, never, ["*"], false>;
 }

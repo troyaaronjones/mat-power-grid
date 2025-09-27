@@ -40,5 +40,5 @@ export declare class ChildGridComponent implements OnInit {
     private sortAscending;
     pageChanged({ pageNo, recordsPerPage }: any): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ChildGridComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ChildGridComponent, "amdg-child-grid", never, { "headings": "headings"; "url": "url"; "entity": "entity"; "serverSidePagination": "serverSidePagination"; }, { "rowClickEmit": "rowClickEmit"; "responseEmit": "responseEmit"; "buttonClickEmit": "buttonClickEmit"; "filtersChangedEmit": "filtersChangedEmit"; }, never, never, false>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ChildGridComponent, "mpg-child-grid", never, { "headings": "headings"; "url": "url"; "entity": "entity"; "serverSidePagination": "serverSidePagination"; }, { "rowClickEmit": "rowClickEmit"; "responseEmit": "responseEmit"; "buttonClickEmit": "buttonClickEmit"; "filtersChangedEmit": "filtersChangedEmit"; }, never, never, false>;
 }

@@ -33,5 +33,5 @@ export declare class DateFilterComponent implements OnInit, OnChanges {
     private close;
     private formatDate;
     static ɵfac: i0.ɵɵFactoryDeclaration<DateFilterComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<DateFilterComponent, "amdg-date-filter", never, { "initialFilter": "initialFilter"; "resetFilters": "resetFilters"; }, { "filter": "filter"; }, never, never, false>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<DateFilterComponent, "mpg-date-filter", never, { "initialFilter": "initialFilter"; "resetFilters": "resetFilters"; }, { "filter": "filter"; }, never, never, false>;
 }

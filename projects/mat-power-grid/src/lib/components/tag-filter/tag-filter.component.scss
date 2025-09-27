@@ -1,0 +1,52 @@
+@use './../../variables' as *;
+
+.mpg-placeholder {
+  opacity: .6;
+}
+
+.mpg-filter-container {
+  width: 260px;
+  min-height: 60px;
+  display: block;
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 12px;
+
+  .mpg-tags-container {
+    max-height: 300px;
+    overflow-y: auto;
+  }
+}
+
+.mpg-filter-open-btn {
+  line-height: 26px !important;
+  font-size: inherit;
+  padding: 0 4px;
+  width: 100%;
+  background: white;
+  ::ng-deep .mat-button-wrapper {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.mpg-select-arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid;
+  margin: 0 4px;
+}
+
+.mpg-tag-input {
+  width: calc(100% - 30px);
+}
+
+.mpg-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+  color: rgba(0, 0, 0, 0.87);
+}

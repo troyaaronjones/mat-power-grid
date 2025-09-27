@@ -29,5 +29,5 @@ export declare class TagFilterComponent implements OnInit, OnChanges {
     stringPaste(event: ClipboardEvent): void;
     private ifNumber;
     static ɵfac: i0.ɵɵFactoryDeclaration<TagFilterComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<TagFilterComponent, "amdg-tag-filter", never, { "initialFilter": "initialFilter"; "resetFilters": "resetFilters"; "numbersOnly": "numbersOnly"; }, { "filter": "filter"; }, never, never, false>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<TagFilterComponent, "mpg-tag-filter", never, { "initialFilter": "initialFilter"; "resetFilters": "resetFilters"; "numbersOnly": "numbersOnly"; }, { "filter": "filter"; }, never, never, false>;
 }

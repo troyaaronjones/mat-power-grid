@@ -31,5 +31,5 @@ export declare class MultiSelectComponent implements OnInit, OnChanges {
     changeSearch(): void;
     searchFilterKeydown(event: KeyboardEvent): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<MultiSelectComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<MultiSelectComponent, "amdg-multi-select", never, { "initialFilter": "initialFilter"; "resetFilters": "resetFilters"; "filterConfig": "filterConfig"; }, { "filter": "filter"; }, never, never, false>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MultiSelectComponent, "mpg-multi-select", never, { "initialFilter": "initialFilter"; "resetFilters": "resetFilters"; "filterConfig": "filterConfig"; }, { "filter": "filter"; }, never, never, false>;
 }

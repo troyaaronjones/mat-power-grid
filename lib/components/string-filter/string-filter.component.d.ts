@@ -28,5 +28,5 @@ export declare class StringFilterComponent implements OnInit, OnChanges {
     validate(): void;
     private close;
     static ɵfac: i0.ɵɵFactoryDeclaration<StringFilterComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<StringFilterComponent, "amdg-string-filter", never, { "initialFilter": "initialFilter"; "resetFilters": "resetFilters"; }, { "filter": "filter"; }, never, never, false>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<StringFilterComponent, "mpg-string-filter", never, { "initialFilter": "initialFilter"; "resetFilters": "resetFilters"; }, { "filter": "filter"; }, never, never, false>;
 }

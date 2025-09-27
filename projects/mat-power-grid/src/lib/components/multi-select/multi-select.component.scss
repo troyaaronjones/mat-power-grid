@@ -1,0 +1,32 @@
+@use './../../variables' as *;
+
+.mpg-filter-value {
+  padding: 0;
+  display: inline;
+  min-width: auto;
+  font-size: 12px;
+  line-height: normal;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+.mpg-modified-mat-select {
+  border: 1px solid $highlight-dark-color;
+  border-radius: 4px;
+  padding: 0 4px;
+  height: 28px;
+  line-height: 28px !important;
+  background: white;
+  box-sizing: border-box;
+}
+
+.mpg-additional-selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+}
+
+#mpg-list-container {
+  max-height: 160px;
+  overflow-y: scroll;
+}

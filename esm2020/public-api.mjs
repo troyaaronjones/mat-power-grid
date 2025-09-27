@@ -1,8 +1,8 @@
 /*
- * Public API Surface of angular-material-data-grid
+ * Public API Surface of mat-power-grid
  */
-export * from './lib/angular-material-data-grid.service';
+export * from './lib/mat-power-grid.service';
 export * from './lib/grids/server-bind-grid/server-bind-grid.component';
-export * from './lib/angular-material-data-grid.module';
-export * from './lib/angular-material-data-grid-interfaces';
+export * from './lib/mat-power-grid.module';
+export * from './lib/mat-power-grid-interfaces';
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLWFwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL2FuZ3VsYXItbWF0ZXJpYWwtZGF0YS1ncmlkL3NyYy9wdWJsaWMtYXBpLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztHQUVHO0FBRUgsY0FBYywwQ0FBMEMsQ0FBQztBQUN6RCxjQUFjLHlEQUF5RCxDQUFDO0FBQ3hFLGNBQWMseUNBQXlDLENBQUM7QUFDeEQsY0FBYyw2Q0FBNkMsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qXG4gKiBQdWJsaWMgQVBJIFN1cmZhY2Ugb2YgYW5ndWxhci1tYXRlcmlhbC1kYXRhLWdyaWRcbiAqL1xuXG5leHBvcnQgKiBmcm9tICcuL2xpYi9hbmd1bGFyLW1hdGVyaWFsLWRhdGEtZ3JpZC5zZXJ2aWNlJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL2dyaWRzL3NlcnZlci1iaW5kLWdyaWQvc2VydmVyLWJpbmQtZ3JpZC5jb21wb25lbnQnO1xuZXhwb3J0ICogZnJvbSAnLi9saWIvYW5ndWxhci1tYXRlcmlhbC1kYXRhLWdyaWQubW9kdWxlJztcbmV4cG9ydCAqIGZyb20gJy4vbGliL2FuZ3VsYXItbWF0ZXJpYWwtZGF0YS1ncmlkLWludGVyZmFjZXMnO1xuIl19

@@ -36,5 +36,5 @@ export declare class NumberFilterComponent implements OnInit, OnChanges, OnDestr
     validate(): void;
     private close;
     static ɵfac: i0.ɵɵFactoryDeclaration<NumberFilterComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<NumberFilterComponent, "amdg-number-filter", never, { "initialFilter": "initialFilter"; "resetFilters": "resetFilters"; }, { "filter": "filter"; }, never, never, false>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<NumberFilterComponent, "mpg-number-filter", never, { "initialFilter": "initialFilter"; "resetFilters": "resetFilters"; }, { "filter": "filter"; }, never, never, false>;
 }

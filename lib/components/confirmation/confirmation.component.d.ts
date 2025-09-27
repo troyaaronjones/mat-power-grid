@@ -15,5 +15,5 @@ export declare class ConfirmationComponent implements OnInit {
     close(): void;
     ok(): void;
     static ɵfac: i0.ɵɵFactoryDeclaration<ConfirmationComponent, never>;
-    static ɵcmp: i0.ɵɵComponentDeclaration<ConfirmationComponent, "amdg-confirmation", never, {}, {}, never, never, false>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<ConfirmationComponent, "mpg-confirmation", never, {}, {}, never, never, false>;
 }

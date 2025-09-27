@@ -1,0 +1,50 @@
+<button class="mpg-filter-open-btn mpg-layout-container"
+    mat-stroked-button [color]="filterApplied ? 'accent': 'none'"
+    type="button" #menuTrigger="matMenuTrigger"
+    [matMenuTriggerFor]="numberFilterMenu" (menuOpened)="menuOpened()">
+    @if (!filterApplied) {
+        <span class="mpg-placeholder mpg-font-weight-normal">Unfiltered</span>
+    } @else {
+        <span class="mpg-text-truncate">{{tagValuesApplied ? tagValuesApplied[0] : null }}</span>
+        @if (tagValuesApplied.length > 1) {
+            <span class="mpg-additional-selection">
+                (+{{tagValuesApplied.length - 1}} {{tagValuesApplied.length === 2 ? 'other' : 'others'}})
+            </span>
+        }
+    }
+  <div class="mpg-select-arrow"></div>
+</button>
+
+<mat-menu #numberFilterMenu="matMenu" class="mpg-overflow-hidden">
+  <div class="mpg-filter-container" (click)="$event.stopPropagation()" (keydown.tab)="$event.stopPropagation()" (keydown.shift.tab)="$event.stopPropagation()">
+    <div class="mpg-layout-container">
+      <button mat-stroked-button type="button" color="primary" (click)="validate()" class="mpg-mr-2 mpg-small-stroked-button">Filter</button>
+      <button mat-stroked-button type="button" color="warn" (click)="reset()" class="mpg-small-stroked-button">Reset</button>
+    </div>
+    <div class="mpg-layout-container mpg-mt-2">
+      <mat-form-field class="mpg-tag-input">
+        <mat-label>Add Tag</mat-label>
+        <input matInput #fromElement type="text" [formControl]="tagValue" (keydown.enter)="addTagValue($event);" (paste)="stringPaste($event)" (keypress)="tagValueKeypress($event)">
+        <mat-error>{{error}}</mat-error>
+      </mat-form-field>
+      <mat-icon class="mpg-cursor-pointer" mat-ripple color="primary" (click)="addTagValue($event);">add</mat-icon>
+    </div>
+    <div class="mpg-layout-container">
+      <mat-divider class="mpg-w-100 mt-1"></mat-divider>
+    </div>
+    @if (tagValues.length === 0) {
+        <p class="mpg-text-center mpg-mt-2 mpg-text-muted">No Tags entered</p>
+    } @else {
+        <div class="mpg-tags-container mpg-p-3">
+          <mat-chip-set>
+            @for (tag of tagValues; track tag; let i = $index) {
+                <mat-chip [removable]="true" (removed)="tagValues.splice(i, 1)">
+                  {{tag}} <mat-icon matChipRemove>cancel</mat-icon>
+                </mat-chip>
+            }
+          </mat-chip-set>
+        </div>
+    }
+
+  </div>
+</mat-menu>
