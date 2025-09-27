@@ -89,7 +89,7 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
     @Input() disableFullScreenToggle = false;
     @Input() pageSizes: number[] = [50, 100, 250, 500, 1000];
     @Input() pageSize: number = 100;
-    @Input() postData: (param: any) => Observable<any>;
+    @Input() postData: ((param: any) => Observable<any>) | undefined;
 
     headingsCopy = [];
     columnSearchParam = '';
