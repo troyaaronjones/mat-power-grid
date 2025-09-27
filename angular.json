@@ -101,23 +101,23 @@
         }
       }
     },
-    "angular-material-data-grid": {
+    "mat-power-grid": {
       "projectType": "library",
-      "root": "projects/angular-material-data-grid",
-      "sourceRoot": "projects/angular-material-data-grid/src",
-      "prefix": "amdg",
+      "root": "projects/mat-power-grid",
+      "sourceRoot": "projects/mat-power-grid/src",
+      "prefix": "mpg",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/angular-material-data-grid/ng-package.json"
+            "project": "projects/mat-power-grid/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/angular-material-data-grid/tsconfig.lib.prod.json"
+              "tsConfig": "projects/mat-power-grid/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/angular-material-data-grid/tsconfig.lib.json"
+              "tsConfig": "projects/mat-power-grid/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -125,9 +125,9 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/angular-material-data-grid/src/test.ts",
-            "tsConfig": "projects/angular-material-data-grid/tsconfig.spec.json",
-            "karmaConfig": "projects/angular-material-data-grid/karma.conf.js"
+            "main": "projects/mat-power-grid/src/test.ts",
+            "tsConfig": "projects/mat-power-grid/tsconfig.spec.json",
+            "karmaConfig": "projects/mat-power-grid/karma.conf.js"
           }
         }
       }

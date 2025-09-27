@@ -1,0 +1,60 @@
+<div>
+    @if (heading.disableFiltering !== true) {
+        @if (heading.type == 'date') {
+            <mpg-date-filter
+                class="mpg-w-100"
+                [initialFilter]="initialFilter"
+                [resetFilters]="resetFilters"
+                (filter)="filterObjCreated($event)">
+            </mpg-date-filter>
+        } @else if (heading.type === 'string') {
+            @switch (heading.filterType) {
+                @case ('multi-select') {
+                    <mpg-multi-select
+                        class="mpg-w-100"
+                        [initialFilter]="initialFilter"
+                        [resetFilters]="resetFilters"
+                        [filterConfig]="heading.other"
+                        (filter)="filterObjCreated($event)">
+                    </mpg-multi-select>
+                }
+                @case ('tag') {
+                    <mpg-tag-filter
+                        class="mpg-w-100"
+                        [initialFilter]="initialFilter"
+                        [resetFilters]="resetFilters"
+                        (filter)="filterObjCreated($event)">
+                    </mpg-tag-filter>
+                }
+                @default {
+                    <mpg-string-filter
+                        class="mpg-w-100"
+                        [initialFilter]="initialFilter"
+                        [resetFilters]="resetFilters"
+                        (filter)="filterObjCreated($event)">
+                    </mpg-string-filter>
+                }
+            }
+        } @else if (heading.type === 'number' || heading.type === 'currency') {
+            @switch (heading.filterType) {
+                @case ('tag') {
+                    <mpg-tag-filter
+                        class="mpg-w-100"
+                        [initialFilter]="initialFilter"
+                        [resetFilters]="resetFilters"
+                        [numbersOnly]="true"
+                        (filter)="filterObjCreated($event)">
+                    </mpg-tag-filter>
+                }
+                @default {
+                    <mpg-number-filter
+                        class="mpg-w-100"
+                        [initialFilter]="initialFilter"
+                        [resetFilters]="resetFilters"
+                        (filter)="filterObjCreated($event)">
+                    </mpg-number-filter>
+                }
+            }
+        }
+    }
+</div>

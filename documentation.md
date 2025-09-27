@@ -1,6 +1,6 @@
-# Angular Material Data Grid Documentation
+# Mat Power Grid Documentation
 
-This document provides detailed documentation on how to use the Angular Material Data Grid and its features.
+This document provides detailed documentation on how to use the Mat Power Grid and its features.
 
 ## Installation
 
@@ -8,8 +8,8 @@ As this package is not available on the npm registry, you need to build it from 
 
 1.  **Clone the repository:**
     ```bash
-    git clone https://github.com/troyaaronjones/angular_material_data_grid.git
-    cd angular_material_data_grid
+    git clone https://github.com/troyaaronjones/mat-power-grid.git
+    cd mat-power-grid
     ```
 
 2.  **Install dependencies:**
@@ -24,14 +24,14 @@ As this package is not available on the npm registry, you need to build it from 
 
 4.  **Navigate to the distribution directory and link the package:**
     ```bash
-    cd dist/angular-material-data-grid
+    cd dist/mat-power-grid
     npm link
     ```
 
 5.  **Navigate to your project and link the package:**
     ```bash
     cd /path/to/your/project
-    npm link angular-material-data-grid
+    npm link mat-power-grid
     ```
 
 6.  **Install Angular Material** (if not already installed):
@@ -41,11 +41,11 @@ As this package is not available on the npm registry, you need to build it from 
 
 7.  **Import Module**
     ```typescript
-    import { AngularMaterialDataGridModule } from 'angular-material-data-grid';
+    import { MatPowerGridModule } from 'mat-power-grid';
 
     imports: [
       // ...,
-      AngularMaterialDataGridModule
+      MatPowerGridModule
     ]
     ```
 
@@ -54,12 +54,12 @@ As this package is not available on the npm registry, you need to build it from 
 ### HTML
 
 ```html
-<amdg-grid
+<mpg-grid
   [headings]="headings"
   [url]="url"
   [serverSidePagination]="true"
   (responseEmit)="responseReceived($event)">
-</amdg-grid>
+</mpg-grid>
 ```
 
 ### TypeScript
