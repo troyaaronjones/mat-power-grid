@@ -43,14 +43,112 @@ This library is compatible with Angular 20 and above.
     ]
     ```
 
-#### Usage (Basic)
-###### HTML
-- <code>&lt;mpg-grid <br>
-     &nbsp;&nbsp;&nbsp;&nbsp;[headings]="headings"<br>
-     &nbsp;&nbsp;&nbsp;&nbsp;[url]="url"<br>
-     &nbsp;&nbsp;&nbsp;&nbsp;[serverSidePagination]="true"<br>
-     &nbsp;&nbsp;&nbsp;&nbsp;(responseEmit)="responseReceived($event)"&gt;<br>
-     &lt;/mpg-grid&gt;</code>
+---
 
-###### TypeScript
-For a complete example of the component's inputs and outputs, please refer to the [documentation.md](documentation.md) file.
+## Detailed Documentation
+
+Looking for advanced configurations like Master-Detail expansion, multi-select dropdown filters, tag searches, custom button configurations, and custom HTTP request handlers? Please refer to our full guide:
+
+👉 [**View full Mat Power Grid Documentation here**](documentation.md)
+
+---
+
+## Quick-Start Setup Examples
+
+Here are two quick setups for both **Client-Side** and **Server-Side** pagination.
+
+### 1. Client-Side Pagination Example
+
+For small-scale datasets where you retrieve all items in a single request and let the grid handle pagination, filtering, and sorting internally.
+
+#### Component HTML
+```html
+<mpg-grid
+  [headings]="headings"
+  [url]="url"
+  [serverSidePagination]="false"
+  [columnControl]="true"
+  [selection]="true"
+  (responseEmit)="onResponseReceived($event)">
+</mpg-grid>
+```
+
+#### Component TypeScript
+```typescript
+import { Component } from '@angular/core';
+import { GridHeading, GridResponse } from 'mat-power-grid';
+
+@Component({
+  selector: 'app-user-grid',
+  templateUrl: './user-grid.component.html'
+})
+export class UserGridComponent {
+  url = 'https://api.example.com/users/all';
+
+  headings: GridHeading[] = [
+    { fieldName: 'id', display: 'ID', type: 'number', width: '80px' },
+    { fieldName: 'name', display: 'Full Name', type: 'string' },
+    { fieldName: 'email', display: 'Email Address', type: 'string' },
+    { fieldName: 'role', display: 'User Role', type: 'string', width: '120px' }
+  ];
+
+  onResponseReceived(response: GridResponse) {
+    console.log('Successfully loaded users: ', response.gridData.length);
+  }
+}
+```
+
+---
+
+### 2. Server-Side Pagination Example
+
+For large-scale datasets. The grid will send a POST request with page, pageSize, active filters, and sort options to the server, and expects the server to return the matching slice of data.
+
+#### Component HTML
+```html
+<mpg-grid
+  [headings]="headings"
+  [url]="url"
+  [serverSidePagination]="true"
+  [entity]="queryParams"
+  [pageSize]="50"
+  (requestBodyEmit)="onRequestSent($event)"
+  (responseEmit)="onResponseReceived($event)">
+</mpg-grid>
+```
+
+#### Component TypeScript
+```typescript
+import { Component } from '@angular/core';
+import { GridHeading, GridRequest, GridResponse } from 'mat-power-grid';
+
+@Component({
+  selector: 'app-orders-grid',
+  templateUrl: './orders-grid.component.html'
+})
+export class OrdersGridComponent {
+  url = 'https://api.example.com/orders/search';
+
+  // Custom entity filters/variables sent with every POST request
+  queryParams = {
+    status: 'COMPLETED'
+  };
+
+  headings: GridHeading[] = [
+    { fieldName: 'orderId', display: 'Order ID', type: 'number', width: '100px' },
+    { fieldName: 'customerName', display: 'Customer', type: 'string' },
+    { fieldName: 'amount', display: 'Total Price', type: 'currency', prefix: '$', textAlign: 'right' },
+    { fieldName: 'orderDate', display: 'Order Date', type: 'date', width: '150px' }
+  ];
+
+  onRequestSent(requestBody: GridRequest) {
+    console.log('Payload being sent to backend:', requestBody);
+  }
+
+  onResponseReceived(response: GridResponse) {
+    console.log(`Successfully fetched records. Total in database: ${response.totalCount}`);
+  }
+}
+```
+
+For more details on custom query shapes, theming with SCSS variables, or setting up action buttons inside your grid, head over to the [Full Documentation Guide](documentation.md).
