@@ -173,7 +173,7 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
             }
             if (!this.pageSizes.includes(this.pageSize)) {
                 this.pageSize = this.pageSizes[0];
-                console.error('@Input() pageSize does not exist on the @Input() pagesSizes array');
+                console.error('@Input() pageSize does not exist on the @Input() pageSizes array');
             }
         }
     }
