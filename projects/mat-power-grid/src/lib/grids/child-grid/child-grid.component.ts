@@ -274,6 +274,17 @@ export class ChildGridComponent implements OnInit {
         return items;
     }
     
+    formatDate(value: any): string {
+        if (!value) {
+            return '';
+        }
+        const date = new Date(value);
+        if (isNaN(date.getTime())) {
+            return value;
+        }
+        return date.toLocaleDateString();
+    }
+
     private sortAscending(sortField: string): any {
         let sortOrder = 1;
         if (sortField[0] === '-') {

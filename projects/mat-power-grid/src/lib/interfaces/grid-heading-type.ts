@@ -44,6 +44,11 @@ export default interface GridHeadingInterface {
     disableSorting?: boolean;
 
     /**
+     * dateFormat - Optional date format used when displaying date columns using Angular's DatePipe.
+     */
+    dateFormat?: string;
+
+    /**
      * textAlign - This value can be used to align column items to left, right or center. By default, it is left-aligned.
      */
     textAlign?: 'left' | 'right' | 'center';
