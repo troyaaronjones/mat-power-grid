@@ -210,10 +210,12 @@
       transition: all 10ms ease-out;
       &:hover {
         transition:all ease 0.1s;
-        background-color: $highlight-dark-color;
+        background-color: $highlight-dark-color !important;
+        background: $highlight-dark-color !important;
       }
       &.empty:hover {
-        background-color: inherit;
+        background-color: inherit !important;
+        background: inherit !important;
       }
       &.rowSelected {
         background: rgba(0, 153, 255, 0.3) !important;

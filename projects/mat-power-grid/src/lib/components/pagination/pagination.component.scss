@@ -6,6 +6,12 @@
   min-height: 40px;
   box-sizing: border-box;
   padding: 4px 8px !important;
+  color: #000000 !important;
+
+  .mpg-text-muted {
+    opacity: 1 !important;
+    color: #000000 !important;
+  }
 }
 
 .mpg-pagination-buttons {
@@ -27,14 +33,20 @@
     align-items: center !important;
     justify-content: center !important;
     font-size: 12px !important;
+    color: #000000 !important;
+
+    &:disabled {
+      color: rgba(0, 0, 0, 0.3) !important;
+    }
 
     ::ng-deep .mat-mdc-button-touch-target {
       display: none !important;
     }
 
     &.mpg-active {
-      color: white !important;
-      background-color: #1976d2 !important;
+      color: #000000 !important;
+      background-color: transparent !important;
+      font-weight: bold !important;
     }
 
     &.mpg-larger-page-btn {
@@ -90,7 +102,7 @@
 }
 
 .mpg-desktop {
-  color: #99999c !important;
+  color: #000000 !important;
 }
 
 @media screen and (max-width: 768px) {
