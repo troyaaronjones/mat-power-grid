@@ -66,7 +66,7 @@
         }
         @if (showNoOfRecords) {
             <div class="vertical-center">
-                <p class="mpg-desktop mpg-text-muted mpg-d-inline mpg-mr-2">Items per page:</p>
+                <span class="mpg-desktop mpg-text-muted mpg-d-inline mpg-mr-2">Items per page:</span>
             </div>
             <div class="vertical-center select">
                 <mat-form-field class="mpg-pagination-selector mpg-mr-4" subscriptSizing="dynamic">
@@ -82,8 +82,7 @@
         @if (noOfSelectedRow) {
             <div class="vertical-center">
                 <span class="mpg-desktop">
-                    <a mat-button color="accent" disableRipple
-                        class="mpg-grid-filter-applied-color mpg-font-weight-bold">{{ noOfSelectedRow }} Selected</a>
+                    <span class="mpg-grid-filter-applied-color mpg-font-weight-bold">{{ noOfSelectedRow }} Selected</span>
                     <span class="mpg-ml-2 mpg-mr-2">|</span>
                 </span>
             </div>
