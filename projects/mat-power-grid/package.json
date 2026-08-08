@@ -1,6 +1,6 @@
 {
   "name": "mat-power-grid",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "An advanced data grid for Angular, offering features like server-side pagination, virtual scrolling, and multi-filtering. Currently in alpha and under active development.",
   "repository": {
     "type": "git",
