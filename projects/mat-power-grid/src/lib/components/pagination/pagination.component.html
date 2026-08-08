@@ -1,4 +1,4 @@
-<div class="mpg-layout-container" style="height: 40px;">
+<div class="mpg-layout-container mpg-pagination-container">
     <div id="mpg-buttons-container" class="mpg-pagination-buttons">
         <button mat-icon-button class="mpg-desktop" aria-label="pagination" color="accent"
             [disabled]="currentPage === 1 || loadingData" (click)="pageChange(1)">
@@ -69,7 +69,7 @@
                 <p class="mpg-desktop mpg-text-muted mpg-d-inline mpg-mr-2">Items per page:</p>
             </div>
             <div class="vertical-center select">
-                <mat-form-field class="mpg-pagination-selector mpg-mr-4">
+                <mat-form-field class="mpg-pagination-selector mpg-mr-4" subscriptSizing="dynamic">
                     <mat-select [disabled]="loadingData" [(ngModel)]="newRecordsPerPage"
                         (ngModelChange)="recordsPerPageChanged()">
                         @for (pageSize of pageSizes; track pageSize) {

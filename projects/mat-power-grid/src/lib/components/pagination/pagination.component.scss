@@ -1,9 +1,16 @@
 @use './../../variables' as *;
 
-.mpg-layout-container {
+.mpg-pagination-container {
   border-top: 1px solid $highlight-dark-color;
   background: $highlight-color;
+  min-height: 40px;
+  box-sizing: border-box;
+  padding: 4px 8px !important;
+}
 
+.mpg-pagination-buttons {
+  display: flex;
+  align-items: center;
 
   .mat-icon-button, .mat-flat-button {
     width: 26px;
@@ -14,6 +21,11 @@
     font-weight: 400;
     min-width: 26px;
     padding: 0;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     &.mpg-active {
       color: white;
     }
@@ -21,9 +33,7 @@
     &.mpg-larger-page-btn {
       width: 40px;
     }
-
   }
-
 }
 
 .mpg-grid-filter-applied-color {
@@ -38,19 +48,25 @@
 .mpg-pagination-selector {
   font-size: 12px;
   width: 6rem !important;
-  height: 42px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .mpg-pagination-items-per-page {
-  align-content: center;
+  align-items: center;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
+  gap: 8px;
+
   .vertical-center {
-    align-items: anchor-center;
-    display: flex;
+    align-items: center;
+    display: inline-flex;
+    height: 100%;
   }
+
   .select {
-    margin-top: 0.8rem !important;
+    display: inline-flex;
+    align-items: center;
   }
 }
 
@@ -60,22 +76,6 @@
 
 .mpg-desktop {
   color: #99999c !important;
-}
-
-.mpg-pagination-buttons {
-  .mpg-active {
-    color: #99999c !important;
-    height: 40px;
-    margin: -1rem 0 0;
-    padding: 0;
-  }
-
-  .mpg-desktop {
-    color: #99999c !important;
-    height: 40px;
-    margin: -1rem 0 0;
-    padding: 0;
-  }
 }
 
 @media screen and (max-width: 768px) {
