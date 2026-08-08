@@ -159,6 +159,17 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
         return item?.amdgGridRowBackground;
     }
 
+    formatDate(value: any): string {
+        if (!value) {
+            return '';
+        }
+        const date = new Date(value);
+        if (isNaN(date.getTime())) {
+            return value;
+        }
+        return date.toLocaleDateString();
+    }
+
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['rowHeight'] && this.scrollStrategy) {
             this.scrollStrategy.updateItemAndBufferSize(this.rowHeight, 400, 400);

@@ -170,6 +170,16 @@
 
                                         @switch (heading.type) {
 
+                                            @case ('date') {
+                                                <span>
+                                                    @if (heading.dateFormat) {
+                                                        {{ item[heading.fieldName] | date: heading.dateFormat }}
+                                                    } @else {
+                                                        {{ formatDate(item[heading.fieldName]) }}
+                                                    }
+                                                </span>
+                                            }
+
                                             @case ('image-url') {
                                                 <div style="height: 48px">
                                                     <img [src]="item[heading.fieldName]" alt="grid image item"

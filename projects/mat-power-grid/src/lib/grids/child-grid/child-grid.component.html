@@ -31,6 +31,16 @@
 
             @switch (heading.type) {
 
+              @case ('date') {
+                <span>
+                  @if (heading.dateFormat) {
+                    {{ item[heading.fieldName] | date: heading.dateFormat }}
+                  } @else {
+                    {{ formatDate(item[heading.fieldName]) }}
+                  }
+                </span>
+              }
+
               @case ('image-url') {
                 <div style="height: 48px" >
                   <img [src]="item[heading.fieldName]" alt="grid image item" width="40px" height="40px" class="mpg-mt-1 mpg-image-tag"  [matMenuTriggerFor]="imageMenu" #trigger="matMenuTrigger" (mouseenter)="trigger.openMenu()" (mouseleave)="trigger.closeMenu()">
