@@ -20,7 +20,8 @@ import {
     Renderer2,
     SimpleChanges,
     ViewChild,
-    ViewEncapsulation
+    ViewEncapsulation,
+    Inject
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, Subscription } from 'rxjs';
@@ -36,7 +37,7 @@ import { GridService } from '../grid.service';
 
 export class CustomVirtualScrollStrategy extends FixedSizeVirtualScrollStrategy {
     constructor() {
-        super(20, 400, 400);
+        super(40, 400, 400);
     }
 }
 
@@ -90,6 +91,9 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
     @Input() pageSizes: number[] = [50, 100, 250, 500, 1000];
     @Input() pageSize: number = 100;
     @Input() postData: ((param: any) => Observable<any>) | undefined;
+    @Input() rowHeight = 40;
+    @Input() rowBackgroundField: string | undefined;
+    @Input() rowBackgroundCallback: ((item: any, index: number) => string) | undefined;
 
     headingsCopy = [];
     columnSearchParam = '';
@@ -131,7 +135,8 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
                 private renderer: Renderer2,
                 public dialog: MatDialog,
                 private ngZone: NgZone,
-                private gridService: GridService) {
+                private gridService: GridService,
+                @Inject(VIRTUAL_SCROLL_STRATEGY) public scrollStrategy: FixedSizeVirtualScrollStrategy) {
     }
     
     ngOnInit(): void {
@@ -144,7 +149,21 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
         });
     }
     
+    getRowBackground(item: any, index: number): string | undefined {
+        if (this.rowBackgroundCallback) {
+            return this.rowBackgroundCallback(item, index);
+        }
+        if (this.rowBackgroundField && item) {
+            return item[this.rowBackgroundField];
+        }
+        return item?.amdgGridRowBackground;
+    }
+
     ngOnChanges(changes: SimpleChanges): void {
+        if (changes['rowHeight'] && this.scrollStrategy) {
+            this.scrollStrategy.updateItemAndBufferSize(this.rowHeight, 400, 400);
+        }
+
         if (changes['entity']?.currentValue || changes['headings']?.currentValue) {
             if (changes['initialFilters']?.firstChange) {
                 this.filters = this.initialFilters;

@@ -139,7 +139,8 @@
                             <tr (mouseover)="overSelect($event, item)"
                                 (click)="onRowClick({$event, item, i})"
                                 [ngClass]="{ odd: odd, rowSelected: item.gridItemSelected == true, expanded: item.gridItemExpanded}"
-                                [style.background]="item?.amdgGridRowBackground">
+                                [style.background]="getRowBackground(item, i)"
+                                [style.height.px]="rowHeight">
                                 @if (selection) {
                                     <td class="mpg-selection mpg-animated" #selectionElem
                                         (mousedown)="startSelect(item, selectionElem)">

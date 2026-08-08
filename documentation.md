@@ -79,6 +79,9 @@ The grid is invoked using the `<mpg-grid>` selector.
 | `pageSizes` | `number[]` | `[50, 100, 250, 500, 1000]` | Available page size selections in the paginator. |
 | `pageSize` | `number` | `100` | Initial default records shown per page. |
 | `postData` | `((param: any) => Observable<any>) \| undefined` | `undefined` | Optional callback to provide a custom HTTP POST function. Ideal for state management (NGRX, Akita, etc.) or custom clients. |
+| `rowHeight` | `number` | `40` | Custom row height in pixels for grid rows. Updates the CDK Virtual Scroll strategy accordingly. |
+| `rowBackgroundField` | `string` | `undefined` | Row item property name to use as background color for each row (e.g., `'bgColor'`). |
+| `rowBackgroundCallback` | `(item: any, index: number) => string` | `undefined` | Custom callback function to dynamically return the background color for each row based on row item data and index. |
 
 ### Outputs
 
