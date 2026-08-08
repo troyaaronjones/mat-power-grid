@@ -322,35 +322,37 @@ body {
   width: inherit;
 }
 
-.mat-mdc-form-field-infix {
-  min-height: unset !important;
-  min-width: fit-content !important;
-  padding-top: 0.15rem !important;
-  padding-bottom: 0.15rem !important;
-}
+.mpg-pagination-selector, .mpg-column-search-field {
+  .mat-mdc-form-field-infix {
+    min-height: unset !important;
+    min-width: fit-content !important;
+    padding-top: 0.15rem !important;
+    padding-bottom: 0.15rem !important;
+  }
 
-.mat-form-field-outline {
-  display: none;
+  .mat-form-field-outline {
+    display: none;
+  }
+
+  .mat-mdc-notch-piece {
+    border-top-color: inherit;
+    border-top-style: solid !important;
+    border-top-width: 1px;
+    border-bottom: 1px solid;
+    box-sizing: border-box;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  .mdc-notched-outline--notched .mdc-notched-outline__notch {
+    padding-left: 0;
+    padding-right: 8px;
+    border-top: inherit !important;
+  }
 }
 
 .mpg-pagination-buttons {
   .mat-mdc-unelevated-button .mat-mdc-button-touch-target {
     height: 2.5rem !important;
   }
-}
-
-.mat-mdc-notch-piece {
-  border-top-color: inherit;
-  border-top-style: solid !important;
-  border-top-width: 1px;
-  border-bottom: 1px solid;
-  box-sizing: border-box;
-  height: 100%;
-  pointer-events: none;
-}
-
-.mdc-notched-outline--notched -mdc-notched-outline_notch {
-  padding-left: 0;
-  padding-right: 8px;
-  border-top: inherit !important;
 }
