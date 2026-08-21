@@ -136,7 +136,7 @@ export class NumberFilterComponent implements OnInit, OnChanges, OnDestroy {
         } else {
             this.filterApplied = false;
         }
-        this.menu.closeMenu();
+        this.menu?.closeMenu();
     }
     
 }

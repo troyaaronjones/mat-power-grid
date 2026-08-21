@@ -72,7 +72,7 @@ export class TagFilterComponent implements OnInit, OnChanges {
     } else {
       this.filterApplied = false;
     }
-    this.menu.closeMenu();
+    this.menu?.closeMenu();
   }
 
   reset(emit = true): void {
@@ -84,7 +84,7 @@ export class TagFilterComponent implements OnInit, OnChanges {
     this.filterApplied = false;
     this.tagValue.setErrors(null);
     this.tagValue.setValue('');
-    this.menu.closeMenu();
+    this.menu?.closeMenu();
   }
 
   addTagValue(event: Event): void {

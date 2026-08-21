@@ -111,7 +111,7 @@ export class DateFilterComponent implements OnInit, OnChanges {
         } else {
             this.filterApplied = false;
         }
-        this.menu.closeMenu();
+        this.menu?.closeMenu();
     }
     
     private formatDate(date: any): void {

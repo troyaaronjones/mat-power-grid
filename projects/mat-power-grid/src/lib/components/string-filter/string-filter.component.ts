@@ -110,7 +110,7 @@ export class StringFilterComponent implements OnInit, OnChanges {
             this.filterApplied = false;
         }
         this.filterParam = this.value.value;
-        this.menu.closeMenu();
+        this.menu?.closeMenu();
     }
     
 }
