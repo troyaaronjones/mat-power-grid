@@ -127,7 +127,7 @@ export class ServerBindGridComponent implements OnInit, AfterViewInit, OnChanges
     
     // Window resize listener
     @HostListener('window:resize', ['$event'])
-    onResize(): void {
+    onResize(event?: Event): void {
         this.calculateGridWidth();
     }
     
