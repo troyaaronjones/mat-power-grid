@@ -8,6 +8,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPowerGridModule } from 'mat-power-grid';
 
 import { AppComponent } from './app.component';
@@ -26,6 +28,8 @@ import { AppComponent } from './app.component';
     MatChipsModule,
     MatButtonModule,
     MatIconModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatPowerGridModule
   ],
   providers: [],

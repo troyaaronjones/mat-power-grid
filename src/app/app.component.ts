@@ -36,7 +36,23 @@ export class AppComponent implements OnInit {
   serverHeadings: GridHeading[] = [
     { fieldName: 'sku', display: 'SKU Tag', type: 'string', filterType: 'tag', width: '140px' },
     { fieldName: 'productName', display: 'Product Name', type: 'string', width: '220px' },
-    { fieldName: 'category', display: 'Category', type: 'string', filterType: 'multi-select', width: '160px' },
+    {
+      fieldName: 'category',
+      display: 'Category',
+      type: 'string',
+      filterType: 'multi-select',
+      width: '160px',
+      other: {
+        selectionMode: 'multiple',
+        source: 'internal',
+        optionsObject: [
+          { text: 'Electronics', value: 'Electronics' },
+          { text: 'Furniture', value: 'Furniture' },
+          { text: 'Office Gear', value: 'Office Gear' },
+          { text: 'Software', value: 'Software' }
+        ]
+      }
+    },
     { fieldName: 'price', display: 'Price', type: 'number', prefix: '$ ', width: '130px' },
     { fieldName: 'rating', display: 'Rating', type: 'number', width: '110px' },
     { fieldName: 'releaseDate', display: 'Release Date', type: 'date', dateFormat: 'yyyy-MM-dd', width: '150px' }
