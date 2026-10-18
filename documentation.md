@@ -6,23 +6,49 @@ Welcome to the comprehensive technical documentation for **Mat Power Grid**.
 
 ## Table of Contents
 1. [Architecture Overview](#architecture-overview)
-2. [Component API Reference (`<mpg-grid>`)](#component-api-reference-mpg-grid)
-3. [Grid Heading Configuration (`GridHeading`)](#grid-heading-configuration-gridheading)
-4. [Filter Types & Behavior](#filter-types--behavior)
-5. [Server-Side Integration Payload (`GridRequest`)](#server-side-integration-payload-gridrequest)
-6. [Master-Detail Expansion](#master-detail-expansion)
-7. [Theming & MDC CSS Utilities](#theming--mdc-css-utilities)
+2. [Demo Showcase & Visual Examples](#demo-showcase--visual-examples)
+3. [Component API Reference (`<mpg-grid>`)](#component-api-reference-mpg-grid)
+4. [Grid Heading Configuration (`GridHeading`)](#grid-heading-configuration-gridheading)
+5. [Filter Types & Behavior](#filter-types--behavior)
+6. [Server-Side Integration Payload (`GridRequest`)](#server-side-integration-payload-gridrequest)
+7. [Master-Detail Expansion](#master-detail-expansion)
+8. [Theming & MDC CSS Utilities](#theming--mdc-css-utilities)
+9. [Running the Demo Application](#running-the-demo-application)
 
 ---
 
 ## Architecture Overview
 
-Mat Power Grid is designed for Angular 20 and provides a complete data grid solution built on Angular Material MDC components and CDK Virtual Scroll.
+Mat Power Grid is designed for Angular 20+ / 21+ and provides a complete data grid solution built on Angular Material MDC components and CDK Virtual Scroll.
 
 Key architectural concepts:
 - **Standalone/Module Compatible:** Exposed via `MatPowerGridModule`.
 - **Flexible Data Handling:** Standard HTTP endpoint requests via `url` or direct reactive observables via `postData`.
 - **MDC Target Safety:** Includes isolated styling rules in `mat-power-grid-utilities.scss` to ensure popups, overlays, and touch targets render without glitches.
+
+---
+
+## Demo Showcase & Visual Examples
+
+### Overview & Column Customization
+The main grid view supports client-side or server-side pagination, sorting, dynamic row background highlights, action buttons, and selection checkboxes.
+
+![Overview Grid View](docs/images/overview-grid.png)
+
+### Column Preferences & Re-ordering Panel
+Users can open the Column Control panel to toggle column visibility and drag-and-drop columns into any custom order.
+
+![Column Control Panel](docs/images/column-control.png)
+
+### Advanced Server Filtering & Data Fetching
+Server-side mode supports rich filter popups including date ranges, numeric ranges, tag matchers, and dropdowns.
+
+![Server Filtering Grid View](docs/images/server-filtering.png)
+
+### Master-Detail Expansion
+Rows can be expanded to display custom sub-templates, child grids, or detailed key-value metadata.
+
+![Master-Detail Grid View](docs/images/master-detail-grid.png)
 
 ---
 
@@ -145,3 +171,18 @@ Import `mat-power-grid-utilities.scss` into your global styles or main SCSS file
 ```scss
 @import 'mat-power-grid/src/lib/mat-power-grid-utilities.scss';
 ```
+
+---
+
+## Running the Demo Application
+
+To launch and test the demo project locally in your workspace:
+
+```bash
+# Build the library package
+yarn lib:build
+
+# Launch the demo server
+yarn start
+```
+Then visit `http://localhost:4200/`.

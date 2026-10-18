@@ -1,0 +1,85 @@
+<div class="demo-header">
+  <div class="header-content">
+    <div class="logo-title">
+      <mat-icon class="grid-icon">grid_on</mat-icon>
+      <h1>Mat Power Grid</h1>
+      <span class="version-badge">V0.1.1 DEMO</span>
+    </div>
+    <p class="subtitle">Enterprise Angular Material Data Grid</p>
+  </div>
+</div>
+
+<main class="demo-container">
+  <mat-tab-group animationDuration="200ms" headerPosition="above" class="demo-tabs">
+
+    <!-- Tab 1: Overview & Styling -->
+    <mat-tab label="Overview & Styling">
+      <div class="tab-content">
+        <div class="feature-card">
+          <h2>Client-Side Data Grid with Custom Styling</h2>
+          <p class="description">
+            Supports row selection, column controls, custom row background callbacks, action buttons, and sorting out of the box.
+          </p>
+
+          <div class="grid-wrapper">
+            <mpg-grid
+              [headings]="overviewHeadings"
+              [postData]="getOverviewDataCallback"
+              [serverSidePagination]="false"
+              [selection]="true"
+              [columnControl]="true"
+              [pageSize]="5"
+              [pageSizes]="[5, 10, 25]"
+              [rowBackgroundCallback]="rowBackgroundFn">
+            </mpg-grid>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Tab 2: Server-Side & Multi-Filtering -->
+    <mat-tab label="Server-Side & Multi-Filtering">
+      <div class="tab-content">
+        <div class="feature-card">
+          <h2>Server-Bound Grid with Advanced Column Filters</h2>
+          <p class="description">
+            Utilizes <code>[postData]</code> custom observable handler with multi-select dropdowns, date picker ranges, numeric filters, and tag search filters.
+          </p>
+
+          <div class="grid-wrapper">
+            <mpg-grid
+              [headings]="serverHeadings"
+              [postData]="fetchServerGridData"
+              [serverSidePagination]="true"
+              [columnControl]="true"
+              [pageSize]="50">
+            </mpg-grid>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Tab 3: Master-Detail Expansion -->
+    <mat-tab label="Master-Detail Expansion">
+      <div class="tab-content">
+        <div class="feature-card">
+          <h2>Expandable Master-Detail Row Views</h2>
+          <p class="description">
+            Click any row to expand child detail panels rendered via custom HTML templates or child grids.
+          </p>
+
+          <div class="grid-wrapper">
+            <mpg-grid
+              [headings]="masterHeadings"
+              [postData]="getMasterDataCallback"
+              [serverSidePagination]="false"
+              [expandable]="true"
+              [expandableConfig]="masterDetailConfig">
+            </mpg-grid>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</main>

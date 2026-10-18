@@ -4,12 +4,17 @@
   "compilerOptions": {
     "paths": {
       "mat-power-grid": [
+        "./projects/mat-power-grid/src/public-api.ts",
         "dist/mat-power-grid/mat-power-grid",
         "dist/mat-power-grid"
+      ],
+      "mat-power-grid/*": [
+        "./projects/mat-power-grid/*"
       ]
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
