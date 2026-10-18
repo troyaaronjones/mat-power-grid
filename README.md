@@ -1,12 +1,16 @@
-# Mat Power Grid for Angular 20
+# Mat Power Grid for Angular
 
-An advanced, high-performance Angular Material Data Grid system offering enterprise-grade features free of charge. Built specifically for Angular 20 and modern MDC-based Material components.
+An advanced, high-performance Angular Material Data Grid system offering enterprise-grade features free of charge. Built specifically for modern Angular and MDC-based Material components.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+![Mat Power Grid Overview](docs/images/overview-grid.png)
+
+---
+
 ## Features
 - **Server-Side & Client-Side Pagination:** Seamlessly manage small client-side datasets or massive server-side datasets.
-- **Custom Data Fetching Callback:** Override standard POST requests using `@Input() postData` for custom API handlers or state stores.
+- **Custom Data Fetching Callback:** Override standard POST requests using `@Input() postData` for custom API handlers or state stores (RxJS observables, NgRx, signals).
 - **Virtual Scrolling:** Efficient CDK virtual scrolling strategy built-in for handling thousands of rows smoothly.
 - **Multi-Filtering System:** String, numeric range/comparison, date range, tag-based, and multi-select dropdown filters.
 - **Column Re-ordering & Control:** Drag-and-drop column reordering and visibility toggles.
@@ -15,10 +19,52 @@ An advanced, high-performance Angular Material Data Grid system offering enterpr
 
 ---
 
+## Demo Showcase
+
+### 1. Overview & Custom Styling
+Support for client-side pagination, row selection checkboxes, customizable row action buttons, dynamic background color callbacks, and column sorting.
+
+![Overview & Styling Grid](docs/images/overview-grid.png)
+
+### 2. Column Controls & Visibility Toggles
+Built-in column control menu supporting drag-and-drop column reordering and interactive show/hide toggles.
+
+![Column Control Panel](docs/images/column-control.png)
+
+### 3. Server-Side Integration & Advanced Filtering
+Integrate server-side pagination with custom filtering callbacks (`[postData]`). Includes type-specific column search menus (date range pickers, numeric range filters, tag multi-matchers, and multi-select dropdowns).
+
+![Server-Side & Advanced Filtering Grid](docs/images/server-filtering.png)
+
+### 4. Master-Detail Row Expansion
+Expand grid rows to reveal custom detail HTML templates or child grids.
+
+![Master Detail Expansion Grid](docs/images/master-detail-grid.png)
+
+---
+
+## Interactive Demo Application
+
+A full interactive demo application is included in this repository under `src/`. To launch the interactive demo application locally:
+
+```bash
+# 1. Install dependencies
+yarn install
+
+# 2. Build the library
+yarn lib:build
+
+# 3. Start the demo application
+yarn start
+```
+Then navigate to `http://localhost:4200` in your browser.
+
+---
+
 ## Compatibility
 
-- **Angular:** `^20.0.0`
-- **Angular Material:** `^20.0.0`
+- **Angular:** `^20.0.0` or `^21.0.0`
+- **Angular Material:** `^20.0.0` or `^21.0.0`
 - **RxJS:** `~7.8.0`
 
 ---
@@ -48,6 +94,11 @@ An advanced, high-performance Angular Material Data Grid system offering enterpr
      ]
    })
    export class AppModule { }
+   ```
+
+4. **Import MDC Utilities Stylesheet (in `styles.scss`):**
+   ```scss
+   @import 'mat-power-grid/src/lib/mat-power-grid-utilities.scss';
    ```
 
 ---

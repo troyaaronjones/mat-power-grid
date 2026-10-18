@@ -1,0 +1,99 @@
+.demo-header {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #ffffff;
+  padding: 16px 32px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+  .header-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .grid-icon {
+        font-size: 28px;
+        width: 28px;
+        height: 28px;
+        color: #818cf8;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+      }
+
+      .version-badge {
+        background-color: rgba(129, 140, 248, 0.2);
+        color: #a5b4fc;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 8px;
+        border-radius: 12px;
+        border: 1px solid rgba(129, 140, 248, 0.3);
+      }
+    }
+
+    .subtitle {
+      margin: 0;
+      color: #94a3b8;
+      font-size: 14px;
+    }
+  }
+}
+
+.demo-container {
+  max-width: 1280px;
+  margin: 24px auto;
+  padding: 0 16px;
+
+  .demo-tabs {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .tab-content {
+    padding: 24px;
+
+    .feature-card {
+      h2 {
+        margin: 0 0 8px 0;
+        font-size: 18px;
+        color: #1e293b;
+        font-weight: 600;
+      }
+
+      .description {
+        margin: 0 0 20px 0;
+        color: #64748b;
+        font-size: 14px;
+
+        code {
+          background-color: #f1f5f9;
+          color: #475569;
+          padding: 2px 6px;
+          border-radius: 4px;
+          font-family: monospace;
+          font-size: 13px;
+        }
+      }
+
+      .grid-wrapper {
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        overflow: hidden;
+        min-height: 420px;
+        background: #ffffff;
+      }
+    }
+  }
+}

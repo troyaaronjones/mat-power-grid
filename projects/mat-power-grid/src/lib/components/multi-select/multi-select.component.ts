@@ -47,9 +47,16 @@ export class MultiSelectComponent implements OnInit, OnChanges {
   constructor(private gridService: GridService) { }
 
   ngOnInit(): void {
-    this.multiple = this.filterConfig.selectionMode === 'multiple' ? true : false;
+    if (!this.filterConfig) {
+      this.filterConfig = {
+        selectionMode: 'multiple',
+        source: 'internal',
+        optionsObject: []
+      };
+    }
+    this.multiple = this.filterConfig.selectionMode === 'single' ? false : true;
 
-    if (this.filterConfig.source === 'external') {
+    if (this.filterConfig.source === 'external' && this.filterConfig.url) {
       this.gridService.getAny(this.filterConfig.url).subscribe(data => {
         if (data.statusCode === 200 || data.success) {
           const {key, value} = this.filterConfig;
@@ -61,7 +68,7 @@ export class MultiSelectComponent implements OnInit, OnChanges {
           console.log(`'${this.filterConfig.url}' failed`);
         }
       });
-    } else { // internal
+    } else if (this.filterConfig.optionsObject) { // internal
       this.selectionList = this.filterConfig.optionsObject.map((item: any) => ({...item, hide: false}));
       this.setInitialFilters();
     }
